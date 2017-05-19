@@ -25,11 +25,7 @@ NOLO Windows SDK
    （4）NOLO_windows软件  
           NOLO_windows软件使用noloRuntime.dll实时监听NOLO数据.   
    （5）nolo API<br>
-   nolo api 提供了noloRuntime.dll的接口函数和数据结构.<br>
-   获取手柄数据，请参阅Controller API.<br>
-   获取头部跟踪数据，请参阅Head Tracking API.<br>
-   获取基站数据，请参阅Base Station API.<br>
-   发送震动数据，请参阅 Shock API.<br>
+   nolo api 在incude的目录下，里面提供了noloRuntime.dll的接口函数和数据结构.<br>
 #
         
         
