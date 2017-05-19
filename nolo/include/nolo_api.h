@@ -163,7 +163,7 @@ namespace NOLO {
 	//
 	NOLO_API UINT PASCAL get_Nolo_HMDTwoPointDriftAngle();
 	//
-	NOLO_API int PASCAL get_Nolo_VersionID();
+	NOLO_API int PASCAL get_Nolo_VersionID(NoloDeviceType devicetype);
 	///get NOLO Controller States By Device Type
 	NOLO_API ControllerStates PASCAL get_Nolo_ControllerStates(NoloDeviceType devicetype);
 	///get NOLO Pose By Device Type
