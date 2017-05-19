@@ -10,7 +10,7 @@
 #else
 #define NOLO_API
 #endif
-
+///NoloRuntime.dll api
 namespace NOLO {
 	typedef struct Vector2
 	{
@@ -31,6 +31,7 @@ namespace NOLO {
 		float z;
 		float w;
 	}Quaternion;
+    //nolo controller struct
 	typedef struct Controller
 	{
 
@@ -50,6 +51,7 @@ namespace NOLO {
 
 		int state;
 	}Controller;
+	///nolo head tracking struct
 	typedef struct HMD
 	{
 
@@ -65,7 +67,7 @@ namespace NOLO {
 
 		int state;
 	}HMD;
-
+    ///nolo base station struct
 	typedef struct BaseStation
 	{
 
@@ -73,7 +75,7 @@ namespace NOLO {
 
 		int BaseStationPower;
 	}BaseStation;
-
+    ///nolo all data struct
 	typedef struct NoloData {
 
 		Controller left_Handle_Data;
@@ -89,7 +91,7 @@ namespace NOLO {
 		*/
 		BYTE expandData[64];
 	}NoloData;
-
+    /// nolo Device type enumerate
 	typedef enum NoloDeviceType
 	{
 		HmdDevice = 0,
@@ -97,7 +99,7 @@ namespace NOLO {
 		RightControllerDevice,
 		BaseStationOne
 	}NoloDeviceType;
-
+    //
 	typedef struct  Nolo_Pose
 	{
 		Vector3 pos;
@@ -116,14 +118,16 @@ namespace NOLO {
 	NOLO_API  void PASCAL open_Nolo_ZeroMQ();
 	//
 	NOLO_API  void PASCAL close_Nolo_ZeroMQ();
-	//
+	///NoloRuntime.dll calls this method as a ZeroMQ socket client when disconnected to the server
 	NOLO_API  bool PASCAL disConnenct_FunCallBack(funcCallBack fun);
-	//
+	///NoloRuntime.dll calls this method as a ZeroMQ socket client when connected to the server
 	NOLO_API  bool PASCAL connectSuccess_FunCallBack(funcCallBack fun);
-	//
+	///According to the type of equipment and vibration intensity to send data packets to the nolo server
 	NOLO_API  void PASCAL set_Nolo_TriggerHapticPulse(NoloDeviceType deviceType, int intensity);
-	//
+	///Returns all data for nolo
 	NOLO_API  NoloData PASCAL get_Nolo_NoloData();
+	//NOLO Controller API
+	
 	//
 	NOLO_API  Controller PASCAL get_Nolo_LeftControllerData();
 	//
@@ -139,14 +143,12 @@ namespace NOLO {
 	//
 	NOLO_API int PASCAL get_Nolo_Battery();
 	//
-	NOLO_API void PASCAL set_Nolo_TriggerHapticPulse(NoloDeviceType deviceType, int intensity);
-	//
 	NOLO_API UINT PASCAL get_Nolo_HMDTwoPointDriftAngle();
 	//
 	NOLO_API int PASCAL get_Nolo_VersionID();
-	//
-	NOLO_API ControllerStates PASCAL get_Nolo_ControllerStates();
-	//
-	NOLO_API Nolo_Pose PASCAL get_Nolo_Pose();
+	///get NOLO Controller States By Device Type
+	NOLO_API ControllerStates PASCAL get_Nolo_ControllerStates(NoloDeviceType devicetype);
+	///get NOLO Pose By Device Type
+	NOLO_API Nolo_Pose PASCAL get_Nolo_Pose(NoloDeviceType devicetype);
 }
 #endif // _NOLO_API_H_
