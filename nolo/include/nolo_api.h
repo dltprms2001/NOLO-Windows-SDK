@@ -35,20 +35,35 @@ namespace NOLO {
 	typedef struct Controller
 	{
 
-		int LeftControllerVersionID;
+		int ControllerVersionID;
 
-		Vector3 LeftControllerPosition;
+		Vector3 ControllerPosition;
 
-		Quaternion LeftControllerRotation;
-
-		UINT LeftButtons;
-
-		int LeftControllerTouched;
-
-		Vector2 LeftControllerTouchAxis;
-
-		int LeftControllerBattery;
-
+		Quaternion ControllerRotation;
+        /*
+		  0x0000_XXX1:press
+          0x0000_XX1X:trigger
+          0x0000_X1XX:menu
+          0x0000_1XXX:system
+          0x0001_XXXX:grip
+		*/
+		UINT Buttons;
+        ///nolo touch
+		int ControllerTouched;
+        /*
+		   x:-1~1
+		   y:-1~1
+		*/
+		Vector2 ControllerTouchAxis;
+        /*
+		  0~100：normal
+		  255:Shut down
+		*/
+		int ControllerBattery;
+        /*
+		  0：Be blocked
+		  1：normal
+		*/
 		int state;
 	}Controller;
 	///nolo head tracking struct
@@ -64,7 +79,10 @@ namespace NOLO {
 		UINT HMDTwoPointDriftAngle;
 
 		Quaternion HMDRotation;
-
+        /*
+		  0：Be blocked
+		  1：normal
+		*/
 		int state;
 	}HMD;
     ///nolo base station struct
@@ -72,7 +90,9 @@ namespace NOLO {
 	{
 
 		int BaseStationVersionID;
-
+        /*
+		  0~100:normal
+		*/
 		int BaseStationPower;
 	}BaseStation;
     ///nolo all data struct
@@ -126,22 +146,20 @@ namespace NOLO {
 	NOLO_API  void PASCAL set_Nolo_TriggerHapticPulse(NoloDeviceType deviceType, int intensity);
 	///Returns all data for nolo
 	NOLO_API  NoloData PASCAL get_Nolo_NoloData();
-	//NOLO Controller API
-	
-	//
+	///returns nolo controller data
 	NOLO_API  Controller PASCAL get_Nolo_LeftControllerData();
-	//
+	///returns nolo controller data
 	NOLO_API  Controller PASCAL get_Nolo_RightControllerData();
-	//
+	///returns nolo head tracking data
 	NOLO_API HMD PASCAL get_Nolo_HMDData();
-	//
+	///returns nolo Expand data
 	NOLO_API BYTE* PASCAL get_Nolo_ExpandData();
-	//
+	///returns nolo init head tracking data
 	NOLO_API Vector3 PASCAL get_Nolo_HMDInirPostion();
-	//
-	NOLO_API int PASCAL get_Nolo_StateByDeviceType();
-	//
-	NOLO_API int PASCAL get_Nolo_Battery();
+	///returns nolo device state by device type
+	NOLO_API int PASCAL get_Nolo_StateByDeviceType(NoloDeviceType type);
+	///returns nolo device battery by device type
+	NOLO_API int PASCAL get_Nolo_Battery(NoloDeviceType deviceType);
 	//
 	NOLO_API UINT PASCAL get_Nolo_HMDTwoPointDriftAngle();
 	//
