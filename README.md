@@ -17,7 +17,7 @@ NOLO Windows SDK
         1：安装Nolo_driver_for_windows_setup.msi软件
         2：安装NOLO_Windows_Setup.msi软件
         3：bin目录下提供了noloRuntime.dll插件
-        4：include目录下提供了nolo_api,详细说明了noloRuntime.dll外接口函数和数据结构.
+        4：include目录下提供了nolo_api,详细说明了noloRuntime.dll外接口函数和数据结构.   
        
    （3）使用策略  
         A:您可以自己创建SUB and Dealter ZMQ套接字作为客户端监听PUB and Router 套接字的端口号,获取NoloData结构数据  
