@@ -135,7 +135,7 @@ namespace NOLO {
 
 	typedef void(*funcCallBack)();
 	//
-	NOLO_API  void PASCAL open_Nolo_ZeroMQ();
+	NOLO_API  bool PASCAL open_Nolo_ZeroMQ();
 	//
 	NOLO_API  void PASCAL close_Nolo_ZeroMQ();
 	///NoloRuntime.dll calls this method as a ZeroMQ socket client when disconnected to the server
