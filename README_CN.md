@@ -27,7 +27,7 @@ NOLO Windows SDK
    （4）NOLO_windows软件  
           NOLO_windows软件是使用noloRuntime.dll插件的一个案例，实时监听NOLO数据.   
    （5）Windows SDK<br>
-          ducuments目录下有windows sdk的详细说明.
+          ducuments目录下提供了NoloVrWindows sdk的详细说明.
 #
         
         
