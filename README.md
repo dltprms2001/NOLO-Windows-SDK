@@ -22,7 +22,7 @@ NOLO Windows SDK
           提供获取nolo数据和发送震动数据的接口api.  
           
    （4）NOLO_windows软件  
-          NOLO_windows软件是使用noloRuntime.dll插件的一个案例，实时监听NOLO数据.
+          NOLO_windows软件是使用noloRuntime.dll插件的一个案例，实时监听NOLO数据.  
    （5）nolo API<br>
           nolo api 在incude的目录下，里面提供了noloRuntime.dll的接口函数和数据结构.<br>
           每个接口函数和数据结构体都有详细的注释.
