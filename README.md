@@ -3,9 +3,9 @@ NOLO Windows SDK
 #
 # 要闻速览
   （1）快速说明  
-       NOLO在PC端使用ZeroMQ套接字作为低延迟传输，与您选择的任何语言进行交互。它可以在本地和远程通过网络工.    
+       NOLO在PC端使用ZeroMQ套接字作为低延迟传输，与您选择的任何语言进行交互。它可以在本地和远程通过网络工作.    
        
-       nolo api介绍了noloRuntime.dll插件的接口函数，您可以获取到头部跟踪数据，手柄数据，基站数据和发送震动数据.   
+       nolo api介绍了noloRuntime.dll插件的接口函数，您可以获取到头部跟踪数据，手柄数据，基站数据,和向下发送震动数据.   
        
   （2）入门  
        在nolo_driver_windows软件运行时，作为PUB and Router ZMQ套接字服务端，通过PUB套接字广播NoloData结构数据包，  
