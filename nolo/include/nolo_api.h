@@ -146,9 +146,9 @@ namespace NOLO {
 	}ControllerStates;
 
 	typedef void(*funcCallBack)();
-	//
+	///Open the ZeroMQ client to recevice nolo data
 	NOLO_API  bool PASCAL open_Nolo_ZeroMQ();
-	//
+	///Close the ZeroMQ client to release the resource
 	NOLO_API  void PASCAL close_Nolo_ZeroMQ();
 	///NoloRuntime.dll calls this method as a ZeroMQ socket client when disconnected to the server
 	NOLO_API  bool PASCAL disConnenct_FunCallBack(funcCallBack fun);
