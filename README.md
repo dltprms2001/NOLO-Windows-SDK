@@ -6,9 +6,7 @@ NOLO Windows SDK
     It can work locally and remotely over the network.For more information, please refer to ZeroMQ website:http://zeromq.org/  
     We use the PUB And Router ZMQ socket as a server,Sub And Dealter ZMQ socket as a client.Server PUB socket for   
     unidirectional broadcast packets, Router socket to receive packets in one direction, the client Sub socket to   
-    receive packets in one direction, Dealer socket for one-way to send packets Receive byte data through the Router  
-    socket [64] handle vibration data packet, data [1] that left hand vibration intensity, data [2] that the right hand vibration  
-    intensity.  
+    receive packets in one direction,Dealter sockets for unidirectional send packets. 
     Router socket port number:tcp://*:1315.  
     PUB socket port number:tcp://*:1314.  
     Nolo_driver_for_windows software as a NOLO ZeroMQ server.  
