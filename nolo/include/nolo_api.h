@@ -69,11 +69,11 @@ namespace NOLO {
 	///nolo head tracking struct
 	typedef struct HMD
 	{
-
+        ///Handle version ID
 		int HMDVersionID;
 
 		Vector3 HMDPosition;
-
+        ///Handle Init Position 
 		Vector3 HMDInirPostion;
 
 		UINT HMDTwoPointDriftAngle;
@@ -88,7 +88,7 @@ namespace NOLO {
     ///nolo base station struct
 	typedef struct BaseStation
 	{
-
+        ///base station version id
 		int BaseStationVersionID;
         /*
 		  0~100:normal
@@ -97,7 +97,7 @@ namespace NOLO {
 	}BaseStation;
     ///nolo all data struct
 	typedef struct NoloData {
-
+        
 		Controller left_Handle_Data;
 
 		Controller right_Handle_Data;
@@ -107,7 +107,7 @@ namespace NOLO {
 		BaseStation baseStationData;
 		/**
 			expandData[0]>>0 :Double click Menu
-			expandData[1]>>1 :Double click System
+			expandData[0]>>1 :Double click System
 		*/
 		BYTE expandData[64];
 	}NoloData;
@@ -128,8 +128,20 @@ namespace NOLO {
 	//
 	typedef struct ControllerStates
 	{
+	   /*
+		  0x0000_XXX1:press
+          0x0000_XX1X:trigger
+          0x0000_X1XX:menu
+          0x0000_1XXX:system
+          0x0001_XXXX:grip
+		*/
 		UINT noloButtons;
+	    ///Handle with touch
 		UINT noloButtonTouch;
+		/*
+		   x:-1~1
+		   y:-1~1
+		*/
 		Vector2 touchpadAxis;
 	}ControllerStates;
 
