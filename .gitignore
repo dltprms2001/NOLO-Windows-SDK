@@ -25,7 +25,5 @@
 *.a
 
 # Executables
-*.exe
 *.out
 *.app
-vc_redist.x64.exe
