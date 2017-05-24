@@ -17,7 +17,7 @@ NOLO Windows SDK
 # Getting started  
     1: Requires Visual Studio 2015 runtime environment.  
     2: Install vc_redist.x64.exe.  
-    3: Install Nolo_driver_for_windows_setup.msi software (required).  
+    3: Install Nolo_driver_for_windows_setup.msi software (required).  
     4: Install the NOLO_Windows_Setup.msi software (optional).  
     5: Bin directory provides the noloRuntime.dll plugin and the dependent plugins.  
     6: The include directory provides nolo_api, detailing the outer interface functions and data structures of noloRuntime.dll.  
