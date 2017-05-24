@@ -14,14 +14,13 @@ NOLO Windows SDK
     NOLO_Windows software is a reference case using noloRuntime.dll, real-time monitoring NOLO server-side data   
     and send vibration data to the server.
 #
-# Getting started  
-    1: Requires Visual Studio 2015 runtime environment.  
-    2: Install vc_redist.x64.exe.  
-    3: Install Nolo_driver_for_windows_setup.msi software (required).  
-    4: Install the NOLO_Windows_Setup.msi software (optional).  
-    5: Bin directory provides the noloRuntime.dll plugin and the dependent plugins.  
-    6: The include directory provides nolo_api, detailing the outer interface functions and data structures of noloRuntime.dll.  
-    7: The ducuments directory provides a detailed description of NoloVrWindows sdk.
+# Getting started    
+    1: Install vc_redist.x64.exe.  
+    2: Install Nolo_driver_for_windows_setup.msi software (required).  
+    3: Install the NOLO_Windows_Setup.msi software (optional).  
+    4: Bin directory provides the noloRuntime.dll plugin and the dependent plugins.  
+    5: The include directory provides nolo_api, detailing the outer interface functions and data structures of noloRuntime.dll.  
+    6: The ducuments directory provides a detailed description of NoloVrWindows sdk.
 #
         
         
