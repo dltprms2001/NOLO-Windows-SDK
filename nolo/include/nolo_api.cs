@@ -140,7 +140,7 @@ namespace NOLO
         public  static extern void close_Nolo_ZeroMQ();
 		///NoloRuntime.dll calls this method as a ZeroMQ socket client when disconnected to the server
         [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "disConnenct_FunCallBack")]
-        public static extern bool disConnenct_FunCallBack(funcCallback funcCallBace);
+        public static extern bool disConnect_FunCallBack(funcCallback funcCallBace);
 		///NoloRuntime.dll calls this method as a ZeroMQ socket client when connected to the server
         [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "connectSuccess_FunCallBack")]
         public static extern bool connectSuccess_FunCallBack(funcCallback funcCallBace);
@@ -169,7 +169,7 @@ namespace NOLO
 
 		///returns nolo init head tracking data
         [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_HMDInirPostion")]
-        public static extern Vector3 get_Nolo_HMDInirPostion();
+        public static extern Vector3 get_Nolo_HMDInitPostion();
 		///returns nolo device state by device type
         [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_StateByDeviceType")]
         public static extern int get_Nolo_StateByDeviceType(NoloDeviceType devicetype);

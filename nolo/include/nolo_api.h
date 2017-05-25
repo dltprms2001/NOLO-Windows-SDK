@@ -151,7 +151,7 @@ namespace NOLO {
 	///Close the ZeroMQ client to release the resource
 	NOLO_API  void PASCAL close_Nolo_ZeroMQ();
 	///NoloRuntime.dll calls this method as a ZeroMQ socket client when disconnected to the server
-	NOLO_API  bool PASCAL disConnenct_FunCallBack(funcCallBack fun);
+	NOLO_API  bool PASCAL disConnect_FunCallBack(funcCallBack fun);
 	///NoloRuntime.dll calls this method as a ZeroMQ socket client when connected to the server
 	NOLO_API  bool PASCAL connectSuccess_FunCallBack(funcCallBack fun);
 	///According to the type of equipment and vibration intensity to send data packets to the nolo server
@@ -167,7 +167,7 @@ namespace NOLO {
 	///returns nolo Expand data
 	NOLO_API BYTE* PASCAL get_Nolo_ExpandData();
 	///returns nolo init head tracking data
-	NOLO_API Vector3 PASCAL get_Nolo_HMDInirPostion();
+	NOLO_API Vector3 PASCAL get_Nolo_HMDInitPostion();
 	///returns nolo device state by device type
 	NOLO_API int PASCAL get_Nolo_StateByDeviceType(NoloDeviceType type);
 	///returns nolo device battery by device type
