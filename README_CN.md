@@ -3,16 +3,10 @@ NOLO Windows SDK
 #
 # 要闻速览
   （1）快速说明  
-       NOLO使用ZeroMQ套接字作为低延迟传输，与您选择的任何语言进行交互.它可以在本地和远程通过网络工作.  
-       详细介绍请参阅ZeroMQ官网：http://zeromq.org/    
-       我们采用了PUB And Router ZMQ套接字作为服务端,Sub And Dealter ZMQ套接字作为客户端,服务端PUB  
-       套接字进行单向广播数据包,Router套接字进行单向接收数据包,客户端Sub套接字进行单向接收数据包,Dealter套接字进行单向发送数据包。
-       通过Router套接字接收byte data[64]手柄震动数据包,data[1]表示左手震动强度,data[2]表示右手震动强度.  
-       Router套接字端口号：tcp://*:1315  
-       PUB套接字端口号:tcp://*:1314  
-       Nolo_driver_for_windows软件作为NOLO ZeroMQ服务端  
-       noloRuntime.dll作为NOLO ZeroMQ客户端  
-       NOLO_Windows软件是使用noloRuntime.dll的一个参考案例，实时监听NOLO服务端数据以及向服务端发送震动数据.  
+      如下图所示,NOLO设备共由基站、头盔定位器和手柄三部分构成,基站和手柄以无线通信的方式与头盔定位器交互,  
+      头盔定位器将数据汇总后通过USB协议与电脑双向通信,电脑端Nolo_driver_for_windows软件可获得NOLO设备的  
+      数据信息,并通过ZeroMQ协议与nolo_api进行双向数据传输.其中,Nolo_driver_for_windows软件是PUB and  
+      Router ZMQ套接字的服务端,noloRuntime.dll是SUB and Dealter ZMQ套接字的客户端.  
    （2）入门    
         1: 安装vc_redist.x64.exe.  
         2：安装Nolo_driver_for_windows_setup.msi软件(必须).<br>   
