@@ -13,12 +13,11 @@ NOLO Windows SDK
        Nolo_driver_for_windows软件作为NOLO ZeroMQ服务端  
        noloRuntime.dll作为NOLO ZeroMQ客户端  
        NOLO_Windows软件是使用noloRuntime.dll的一个参考案例，实时监听NOLO服务端数据以及向服务端发送震动数据.  
-   （2）入门   
-        1: 需要Visual Studio 2015的运行环境.  
-        2: 安装vc_redist.x64.exe.  
-        3：安装Nolo_driver_for_windows_setup.msi软件(必须).<br>   
-        4：安装NOLO_Windows_Setup.msi软件(可选).  
-        5：bin目录下提供了noloRuntime.dll插件以及所依赖的插件.  
-        6：include目录下提供了nolo_api,详细说明了noloRuntime.dll外接口函数和数据结构.<br>   
-        7: ducuments目录下提供了NoloVrWindows sdk的详细说明.  
+   （2）入门    
+        1: 安装vc_redist.x64.exe.  
+        2：安装Nolo_driver_for_windows_setup.msi软件(必须).<br>   
+        3：安装NOLO_Windows_Setup.msi软件(可选).  
+        4：bin目录下提供了noloRuntime.dll插件以及所依赖的插件.  
+        5：include目录下提供了nolo_api,详细说明了noloRuntime.dll外接口函数和数据结构.<br>   
+        6: ducuments目录下提供了NoloVrWindows sdk的详细说明.  
 #
