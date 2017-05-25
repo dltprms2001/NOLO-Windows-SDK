@@ -1,5 +1,9 @@
 # NOLO-windows
 NOLO Windows SDK
+
+- [Get Started](./nolo/documents/GetStarted_CN.md)  
+
+- [API Support](https://github.com/LyrobotixNolo/NOLO-windows/wiki)
 #
 # 要闻速览
   （1）快速说明  
