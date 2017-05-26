@@ -126,37 +126,37 @@ namespace NOLO
 		*/
         public Vector2 touchpadAxis;
     };
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate void funcCallback();
 
 
     public class ClientAPI
     {
 	    ///Open the ZeroMQ client to recevice nolo data
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "open_Nolo_ZeroMQ")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "open_Nolo_ZeroMQ")]
         public  static extern bool open_Nolo_ZeroMQ();
         ///Close the ZeroMQ client to release the resource
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "close_Nolo_ZeroMQ")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "close_Nolo_ZeroMQ")]
         public  static extern void close_Nolo_ZeroMQ();
 		///NoloRuntime.dll calls this method as a ZeroMQ socket client when disconnected to the server
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "disConnenct_FunCallBack")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "disConnenct_FunCallBack")]
         public static extern bool disConnect_FunCallBack(funcCallback funcCallBace);
 		///NoloRuntime.dll calls this method as a ZeroMQ socket client when connected to the server
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "connectSuccess_FunCallBack")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "connectSuccess_FunCallBack")]
         public static extern bool connectSuccess_FunCallBack(funcCallback funcCallBace);
 		///According to the type of equipment and vibration intensity to send data packets to the nolo server
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "set_Nolo_TriggerHapticPulse")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_Nolo_TriggerHapticPulse")]
         public static extern void set_Nolo_TriggerHapticPulse(NoloDeviceType deviceType, int intensity);
 
 	    ///returns nolo controller data
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_LeftControllerData")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_LeftControllerData")]
         public static extern Controller get_Nolo_LeftControllerData();
 
 		///returns nolo controller data
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_RightControllerData")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_RightControllerData")]
         public static extern Controller get_Nolo_RightControllerData();
 		///returns nolo head tracking data
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_HMDData")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_HMDData")]
         public static extern HMD get_Nolo_HMDData();
 		/*
 			returns nolo Expand data 
@@ -164,30 +164,30 @@ namespace NOLO
 			ExpandData[0]>>0 :Double click Menu
 			ExpandData[1]>>1 :Double click system
 		*/
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_ExpandData")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_ExpandData")]
         public static extern IntPtr get_Nolo_ExpandData();
 
 		///returns nolo init head tracking data
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_HMDInirPostion")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_HMDInirPostion")]
         public static extern Vector3 get_Nolo_HMDInitPostion();
 		///returns nolo device state by device type
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_StateByDeviceType")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_StateByDeviceType")]
         public static extern int get_Nolo_StateByDeviceType(NoloDeviceType devicetype);
 
 		///returns nolo device battery by device type
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_Battery")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_Battery")]
         public static extern int get_Nolo_Battery(NoloDeviceType devicetype);
 
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_HMDTwoPointDriftAngle")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_HMDTwoPointDriftAngle")]
         public static extern uint get_Nolo_HMDTwoPointDriftAngle();
 
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_VersionID")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_VersionID")]
         public static extern int get_Nolo_VersionID(NoloDeviceType devicetype);
         ///get NOLO Controller States By Device Type
-		[DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_ControllerStates")]
+		[DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_ControllerStates")]
         public static extern ControllerStates get_Nolo_ControllerStates(NoloDeviceType devicetype);
 		///get NOLO Pose By Device Type
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.StdCall, EntryPoint = "get_Nolo_Pose")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_Pose")]
         public static extern Nolo_Pose get_Nolo_Pose(NoloDeviceType devicetype);
     }
 
