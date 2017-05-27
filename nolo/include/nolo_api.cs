@@ -69,7 +69,7 @@ namespace NOLO
 
         public Vector3 HMDPosition;
         ///Handle Init Position 
-		public Vector3 HMDInirPostion;
+		public Vector3 HMDInitPosition;
 
         public uint HMDTwoPointDriftAngle;
 
@@ -97,7 +97,7 @@ namespace NOLO
         HmdDevice = 0,
         LeftControllerDevice = 1,
         RightControllerDevice = 2,
-        BaseStationOne = 3,
+        BaseStationDevice = 3,
     };
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -139,7 +139,7 @@ namespace NOLO
         [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "close_Nolo_ZeroMQ")]
         public  static extern void close_Nolo_ZeroMQ();
 		///NoloRuntime.dll calls this method as a ZeroMQ socket client when disconnected to the server
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "disConnenct_FunCallBack")]
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "disConnect_FunCallBack")]
         public static extern bool disConnect_FunCallBack(funcCallback funcCallBace);
 		///NoloRuntime.dll calls this method as a ZeroMQ socket client when connected to the server
         [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "connectSuccess_FunCallBack")]
@@ -168,8 +168,8 @@ namespace NOLO
         public static extern IntPtr get_Nolo_ExpandData();
 
 		///returns nolo init head tracking data
-        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_HMDInirPostion")]
-        public static extern Vector3 get_Nolo_HMDInitPostion();
+        [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_HMDInitPosition")]
+        public static extern Vector3 get_Nolo_HMDInitPosition();
 		///returns nolo device state by device type
         [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_StateByDeviceType")]
         public static extern int get_Nolo_StateByDeviceType(NoloDeviceType devicetype);

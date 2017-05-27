@@ -74,7 +74,7 @@ namespace NOLO {
 
 		Vector3 HMDPosition;
         ///Handle Init Position 
-		Vector3 HMDInirPostion;
+		Vector3 HMDInitPosition;
 
 		UINT HMDTwoPointDriftAngle;
 
@@ -117,7 +117,7 @@ namespace NOLO {
 		HmdDevice = 0,
 		LeftControllerDevice,
 		RightControllerDevice,
-		BaseStationOne
+		BaseStationDevice
 	}NoloDeviceType;
     //
 	typedef struct  Nolo_Pose
@@ -167,7 +167,7 @@ namespace NOLO {
 	///returns nolo Expand data
 	NOLO_API BYTE* _cdecl get_Nolo_ExpandData();
 	///returns nolo init head tracking data
-	NOLO_API Vector3 _cdecl get_Nolo_HMDInitPostion();
+	NOLO_API Vector3 _cdecl get_Nolo_HMDInitPosition();
 	///returns nolo device state by device type
 	NOLO_API int _cdecl get_Nolo_StateByDeviceType(NoloDeviceType type);
 	///returns nolo device battery by device type
