@@ -12,12 +12,11 @@ As shown in the figure below, the NOLO device consists of a base station, a head
 <div><img src="./startmessage.PNG"></div>  
 
 ## Using Steps
-* 1: Install vc_redist.x64.exe.   
-* 2: Install Nolo_driver_for_windows_setup.msi software (required).   
-* 3: Install the NOLO_Windows_Setup.msi software (optional).  
-* 4: Bin directory provides the noloRuntime.dll plugin and the dependent plugins.  
-* 5: The include directory provides nolo_api, detailing the outer interface functions and data structures of noloRuntime.dll.  
-* 6: The ducuments directory provides a detailed description of NoloVrWindows sdk.
+* 1: Install Nolo_driver_for_windows_setup.msi software (required).   
+* 2: Install the NOLO_Windows_Setup.msi software (optional).  
+* 3: Bin directory provides the noloRuntime.dll plugin and the dependent plugins.  
+* 4: The include directory provides nolo_api, detailing the outer interface functions and data structures of noloRuntime.dll.  
+* 5: The ducuments directory provides a detailed description of NoloVrWindows sdk.
     
       
 
