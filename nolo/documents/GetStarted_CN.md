@@ -8,11 +8,10 @@ Router ZMQ套接字的服务端,noloRuntime.dll是SUB and Dealter ZMQ套接字�
 <div><img src="./startmessage.PNG"></div>  
 
 ## 使用流程
-* 1: 安装vc_redist.x64.exe.
-* 2: 安装Nolo_driver_for_windows_setup.msi软件(必须).  
-* 3: 安装NOLO_Windows_Setup.msi软件(可选).
-* 4: bin目录下提供了noloRuntime.dll插件以及所依赖的插件. 
-* 5：include目录下提供了nolo_api,详细说明了noloRuntime.dll外接口函数和数据结构.
-* 6: ducuments目录下提供了NoloVrWindows sdk的详细说明.
+* 1: 安装Nolo_driver_for_windows_setup.msi软件(必须).  
+* 2: 安装NOLO_Windows_Setup.msi软件(可选).
+* 3: bin目录下提供了noloRuntime.dll插件以及所依赖的插件. 
+* 4：include目录下提供了nolo_api,详细说明了noloRuntime.dll外接口函数和数据结构.
+* 5: ducuments目录下提供了NoloVrWindows sdk的详细说明.
  
   
