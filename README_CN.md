@@ -20,13 +20,15 @@ NOLO Windows SDK
         noloRuntime.dll依赖libzmq.dll   
         <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/7.jpg"></div>
         4:引用链接#pragma comment(lib,"noloRuntime.lib文件路径").  
+        
         5:注册回调函数,开启客户端.  
+        
         ```
         NOLO::disConnect_FunCallBack(disConnectFunc);  
         NOLO::connectSuccess_FunCallBack(connectFunc);  
         NOLO::expandDataNotify_FuncCallBack(expandFunc);  
         NOLO::open_Nolo_ZeroMQ();  
-        ```
+        ```  
         6:正常使用nolo_api中的其他接口函数.  
         7:退出程序时,关闭客户端  
          ```
