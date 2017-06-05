@@ -173,7 +173,7 @@ namespace NOLO
 			returns nolo Expand data 
 			return byte ExpandData[64]
 			ExpandData[0]>>0 :Double click Menu
-			ExpandData[1]>>1 :Double click system
+			ExpandData[0]>>1 :Double click system
 		*/
         [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_ExpandData")]
         public static extern IntPtr get_Nolo_ExpandData();
