@@ -6,7 +6,11 @@ NOLO Windows SDK
     * :C/C++工程(VS开发工具)  
         1:新建VS C++工程.  
         2:点击项目->属性->C/C++->常规->附加目录，加载NOLOVR/include.  
-        3:在NOLOVR/bin目录下选择需要的dll插件复制到您的工程目录.  
+        3:在NOLOVR/bin目录下选择需要的dll插件复制到您的工程目录.   
+        V140对应VS2015的运行环境  
+        V120对应VS2013的运行环境  
+        V110对应Vs2012的运行环境  
+        noloRuntime.dll依赖libzmq.dll   
         4:引用链接#pragma comment(lib,"noloRuntime.lib文件路径").  
         5:注册回调函数,开启客户端.  
         ```
@@ -24,6 +28,10 @@ NOLO Windows SDK
         1:新建VS C#工程.  
         2:复制NOLOVR/include/nolo_api.cs文件到工程中.  
         3:在NOLOVR/bin中选择需要的dll复制到您的工程目录下.  
+        V140对应VS2015的运行环境  
+        V120对应VS2013的运行环境  
+        V110对应Vs2012的运行环境  
+        noloRuntime.dll依赖libzmq.dll   
         4:注册回调函数，开启客户端  
         ```
         NOLOClient_V1_API.connectSuccess_FunCallBack(connectFunc);
