@@ -2,7 +2,7 @@
 NOLO Windows SDK
 
 - 快速入门    
-    * :安装[Nolo_driver_for_windows_setup.msi](NOLO-Driver-For-Windows/NOLOVR/Nolo_driver_for_windows_setup.msi)软件.
+    * :安装[Nolo_driver_for_windows_setup.msi](https://github.com/LYRobotix/NOLO-Driver-For-Windows/raw/master/NOLOVR/Nolo_driver_for_windows_setup.msi)软件.
     * :C/C++工程  
         1:点击项目->属性->C/C++->常规->附加目录，加载NOLOVR/include.  
         2:在NOLOVR/bin目录下选择需要的dll插件复制到您的工程根目录.  
