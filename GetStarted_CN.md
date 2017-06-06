@@ -1,5 +1,5 @@
 
-# 快速入门  [English]()  
+# 快速入门  [English](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted.md)  
 * :安装[Nolo_driver_for_windows_setup.msi](https://github.com/NOLOVR/NOLO-Driver-For-Windows/raw/master/NOLOVR/Nolo_driver_for_windows_setup.msi)软件.
 * :启动Nolo_driver_for_windows软件.  
 * :C/C++工程(VS开发工具)  

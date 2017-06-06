@@ -15,9 +15,9 @@
       For other game developers can choose NOLO provided Windows SDK.  
     * Application developers can use the data provided by NOLO to develop a variety of application software.   
    
-- [API channels](https://github.com/LYRobotix/NOLO-Windows-SDK/wiki)  
+- [API channels](https://github.com/NOLOVR/NOLO-Windows-SDK/wiki)  
 
-- [Getting started]()  
+- [Getting started](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted.md)  
 # Changes  
 V1
 - Add double click the menu button and system key callback notification interface function 

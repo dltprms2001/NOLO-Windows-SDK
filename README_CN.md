@@ -15,9 +15,9 @@
       对于其他游戏开发者可以选择NOLO提供的Windows SDK.  
     * 应用类的开发者可以使用NOLO提供的数据开发各种应用软件.  
    
-- [接口说明](https://github.com/LYRobotix/NOLO-Windows-SDK/wiki)  
+- [接口说明](https://github.com/NOLOVR/NOLO-Windows-SDK/wiki)  
 
-- [快速入门]()  
+- [快速入门](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted_CN.md)  
 # 变化
 - Add double click the menu button and system key callback notification interface function 
 #
