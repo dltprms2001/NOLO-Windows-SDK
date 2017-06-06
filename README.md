@@ -4,7 +4,7 @@
     * The SDK provides NOLO all the data, including real-time data such as helmets, handles, base stations and so on.  
     * PC helmet developers can use NOLO  data to access  a variety of gaming platforms.  
       Which in the Steam platform, NOLO provided Steam Vr game handle driver, developers only need to access the head positioning data.  
-      While on other platforms, such as the Oculus platform, developers can use NOLO to provide the handle and helmet data access game platform.  
+      While on other platforms, such as the Oculus platform, developers can use the handle and helmet data provided by NOLO to access game platform.  
     * Mobile phone cast screen software category developers can use NOLO  data to access  a variety of   gaming platforms.  
       NOLO provides helmet positioning data and rotation data,When the rotation data provided by the handset gyroscope is not stable enough, select the rotation data provided by NOLO.  
       Which in the Steam platform, NOLO provided Steam Vr game handle driver, developers only need to access the head positioning data.  
