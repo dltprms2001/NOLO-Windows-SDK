@@ -13,7 +13,7 @@
       For Unity game developers can choose NOLO provided Unity SDK.  
       For mobile game developers can choose NOLO provided Android SDK.  
       For other game developers can choose NOLO provided Windows SDK.  
-    * Application developers can use the data provided by NOLO to develop a variety of application       software.   
+    * Application developers can use the data provided by NOLO to develop a variety of application software.   
    
 - [API channels](https://github.com/LYRobotix/NOLO-Windows-SDK/wiki)  
 
