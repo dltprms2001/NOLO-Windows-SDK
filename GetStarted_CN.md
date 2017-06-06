@@ -1,17 +1,64 @@
 
-# 快速入门
-## 快速说明
-如下图所示,NOLO设备共由基站、头盔定位器和手柄三部分构成,基站和手柄以无线通信的方式与头盔定位器交互,
-头盔定位器将数据汇总后通过USB协议与电脑双向通信,电脑端Nolo_driver_for_windows软件可获得NOLO设备的
-数据信息,并通过ZeroMQ协议与nolo_api进行双向数据传输.其中,Nolo_driver_for_windows软件是PUB and
-Router ZMQ套接字的服务端,noloRuntime.dll是SUB and Dealter ZMQ套接字的客户端
-<div><img src="./startmessage.PNG"></div>  
+# 快速入门  [English]()  
+    * :安装[Nolo_driver_for_windows_setup.msi](https://github.com/LYRobotix/NOLO-Driver-For-Windows/raw/master/NOLOVR/Nolo_driver_for_windows_setup.msi)软件.
+    * :启动Nolo_driver_for_windows软件.  
+    * :C/C++工程(VS开发工具)  
+        1:新建VS C++工程.  
+         <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/1.jpg"></div>
+        2:点击项目->属性->C/C++->常规->附加目录，加载NOLOVR/include. 
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/2.jpg"></div> 
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/3.jpg"></div> 
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/4.jpg"></div> 
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/5.jpg"></div>  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/6.jpg"></div>
+        3:在NOLOVR/bin目录下选择需要的dll插件复制到您的工程目录.   
+        V140对应VS2015的运行环境  
+        V120对应VS2013的运行环境  
+        V110对应Vs2012的运行环境  
+        noloRuntime.dll依赖libzmq.dll   
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/7.jpg"></div>
+        4:引用链接#pragma comment(lib,"noloRuntime.lib文件路径").  
 
-## 使用流程
-* 1: 安装Nolo_driver_for_windows_setup.msi软件(必须).  
-* 2: 安装NOLO_Windows_Setup.msi软件(可选).
-* 3: bin目录下提供了noloRuntime.dll插件以及所依赖的插件. 
-* 4：include目录下提供了nolo_api,详细说明了noloRuntime.dll外接口函数和数据结构.
-* 5: ducuments目录下提供了NoloVrWindows sdk的详细说明.
+        5:注册回调函数,开启客户端.  
+        
+        ```
+        NOLO::disConnect_FunCallBack(disConnectFunc);  
+        NOLO::connectSuccess_FunCallBack(connectFunc);  
+        NOLO::expandDataNotify_FuncCallBack(expandFunc);  
+        NOLO::open_Nolo_ZeroMQ();  
+        ```  
+        6:正常使用nolo_api中的其他接口函数.  
+        7:退出程序时,关闭客户端  
+         ```
+         NOLO::close_Nolo_ZeroMQ();
+         ```  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/8.jpg"></div>
+    * :C#工程(VS开发工具)  
+        1:新建VS C#工程.  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/9.jpg"></div>
+        2:复制NOLOVR/include/nolo_api.cs文件到工程中.  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/10.jpg"></div>
+        3:在NOLOVR/bin中选择需要的dll复制到您的工程目录下.  
+        V140对应VS2015的运行环境  
+        V120对应VS2013的运行环境  
+        V110对应Vs2012的运行环境  
+        noloRuntime.dll依赖libzmq.dll   
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/11.jpg"></div>
+
+        4:注册回调函数，开启客户端  
+        ```
+        NOLOClient_V1_API.connectSuccess_FunCallBack(connectFunc);
+        NOLOClient_V1_API.disConnect_FunCallBack(disConnectFunc);
+        NOLOClient_V1_API.expandDataNotify_FuncCallBack(expandDataFunc);
+        NOLOClient_V1_API.open_Nolo_ZeroMQ();
+        ```
+        5:正常使用nolo_api.cs中的其他接口函数  
+        6:退出程序时，关闭客户端  
+        ```
+        NOLOClient_V1_API.close_Nolo_ZeroMQ();
+        ```  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/12.jpg"></div>
+
+#
  
   

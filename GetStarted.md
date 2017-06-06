@@ -1,22 +1,62 @@
-# Getting started
-## Quick description  
-NOLO users ZeroMQ sockets as a low-latency transmission to interact with any language of your choice.It can work locally and remotely over the network.  
-For more information, please refer to ZeroMQ website:http://zeromq.org/ We use the PUB And Router ZMQ socket as a server,Sub And Dealter ZMQ socket as a client.  
-Server PUB socket for unidirectional broadcast packets, Router socket to receive packets in one direction, the client Sub socket to receive packets in one direction,Dealter sockets for unidirectional send packets.   
-Router socket port number:tcp://*:1315.  
-PUB socket port number:tcp://*:1314.  
-Nolo_driver_for_windows software as a NOLO ZeroMQ server.NoloRuntime.dll as the NOLO ZeroMQ client.  
-NOLO_Windows software is a reference case using noloRuntime.dll, real-time monitoring NOLO server-side data and send vibration data to the server.  
+# Getting started   [中文]()
+    * :Install[Nolo_driver_for_windows_setup.msi](https://github.com/LYRobotix/NOLO-Driver-For-Windows/raw/master/NOLOVR/Nolo_driver_for_windows_setup.msi)software.  
+    * :Open Nolo_driver_for_windows software.  
+    * :C/C++Project(VS development tools)  
+        1: New VS C ++ project.  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/1.jpg"/></div>  
+        2: Click Project -> Properties -> C / C ++ -> General -> Additional directory,load NOLOVR/include.  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/2.jpg"/></div> 
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/3.jpg"/></div> 
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/4.jpg"/></div> 
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/5.jpg"/></div>  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/6.jpg"/></div>  
+        3:In the NOLOVR / bin directory, select the dll plugin to copy to your project directory.  
 
-As shown in the figure below, the NOLO device consists of a base station, a headset marker and two controllers, the base station and the controllers interact with the headset marker in a wireless communication. The headset marker gather the data and communicate with computer in two-way through the USB protocol. Computer-side Nolo_driver_for_windows software can get the data information of NOLO device, and transfer data to nolo_api in two-way through the ZeroMQ protocol. Nolo_driver_for_windows software is the socket server of PUB and Router ZMQ, noloRuntime.dll is the socket client of SUB and Dealer ZMQ.  
-<div><img src="./startmessage.PNG"></div>  
+        V140-VS2015 operating environment  
+        V120-VS2013 operating environment  
+        V110-Vs2012 operating environment  
+        NoloRuntime.dll depends on libzmq.dll  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/7.jpg"/></div>  
+        4:Reference link #pragma comment(lib,"noloRuntime.lib file path").  
+        5:Register the callback function,Open the client.  
+        
+        ```
+        NOLO::disConnect_FunCallBack(disConnectFunc);  
+        NOLO::connectSuccess_FunCallBack(connectFunc);  
+        NOLO::expandDataNotify_FuncCallBack(expandFunc);  
+        NOLO::open_Nolo_ZeroMQ();  
+        ```  
+        6:Normal use of other interface functions in nolo_api.  
+        7:When exiting the program,close the client.  
+         
+         ```
+         NOLO::close_Nolo_ZeroMQ();
+         ```  
+         <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/8.jpg"/></div>  
 
-## Using Steps
-* 1: Install Nolo_driver_for_windows_setup.msi software (required).   
-* 2: Install the NOLO_Windows_Setup.msi software (optional).  
-* 3: Bin directory provides the noloRuntime.dll plugin and the dependent plugins.  
-* 4: The include directory provides nolo_api, detailing the outer interface functions and data structures of noloRuntime.dll.  
-* 5: The ducuments directory provides a detailed description of NoloVrWindows sdk.
+    * :C# Project(VS development tools)  
+        1: New VS C# project.  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/9.jpg"/></div>
+        2: Copy the NOLOVR / include / nolo_api.cs file into the project.  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/10.jpg"/></div>  
+        3:In the NOLOVR / bin select dll copy to your project directory.  
+        
+        V140-VS2015 operating environment  
+        V120-VS2013 operating environment  
+        V110-Vs2012 operating environment  
+        NoloRuntime.dll depends on libzmq.dll  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/7.jpg"/></div>  
+        4:Register the callback function,Open the client.  
+
+        5:Normal use of other interface functions in nolo_api.cs.  
+        6:When exiting the program,close the client.  
+        
+        ```
+        NOLOClient_V1_API.close_Nolo_ZeroMQ();
+        ```  
+        <div><img width=400 heigh=200 src="https://github.com/LYRobotix/NOLO-Windows-SDK/blob/master/Examples/picture/12.jpg"/></div>
+
+#
     
       
 
