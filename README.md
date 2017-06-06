@@ -18,7 +18,7 @@
 - [API channels](https://github.com/LYRobotix/NOLO-Windows-SDK/wiki)  
 
 - [Getting started]()  
-# 变化
+# Changes
 - Add double click the menu button and system key callback notification interface function 
 #
 
