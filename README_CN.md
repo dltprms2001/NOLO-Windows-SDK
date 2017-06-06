@@ -19,5 +19,5 @@
 
 - [快速入门](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted_CN.md)  
 # 变化
-- Add double click the menu button and system key callback notification interface function 
+- 添加双击手柄menu和system按键回调通知接口函数
 #
