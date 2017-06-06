@@ -20,18 +20,17 @@
     4:Reference link #pragma comment(lib,"noloRuntime.lib file path").  
     5:Register the callback function,Open the client.  
 
-        ```
+    ```
         NOLO::disConnect_FunCallBack(disConnectFunc);  
         NOLO::connectSuccess_FunCallBack(connectFunc);  
         NOLO::expandDataNotify_FuncCallBack(expandFunc);  
         NOLO::open_Nolo_ZeroMQ();  
-        ```  
+    ```  
     6:Normal use of other interface functions in nolo_api.  
     7:When exiting the program,close the client.  
-         
-         ```
+    ```
          NOLO::close_Nolo_ZeroMQ();
-         ```  
+    ```  
 
     <div><img width=400 heigh=200 src="https://github.com/NOLOVR/NOLO-Others/blob/master/Windows-SDK-Others/picture/7.jpg"/></div>
 
@@ -41,7 +40,6 @@
     2: Copy the NOLOVR / include / nolo_api.cs file into the project.  
         <div><img width=400 heigh=200 src="https://github.com/NOLOVR/NOLO-Others/blob/master/Windows-SDK-Others/picture/10.jpg"/></div>
     3:In the NOLOVR / bin select dll copy to your project directory.  
-        
         V140-VS2015 operating environment  
         V120-VS2013 operating environment  
         V110-Vs2012 operating environment  
@@ -50,10 +48,9 @@
     4:Register the callback function,Open the client.  
 
     5:Normal use of other interface functions in nolo_api.cs.  
-    6:When exiting the program,close the client.  
-        
-        ```
+    6:When exiting the program,close the client. 
+    ```
         NOLOClient_V1_API.close_Nolo_ZeroMQ();
-        ```  
+    ```  
     <div><img width=400 heigh=200 src="https://github.com/NOLOVR/NOLO-Others/blob/master/Windows-SDK-Others/picture/12.jpg"/></div>
 #

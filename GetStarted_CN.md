@@ -20,20 +20,17 @@
     4:引用链接#pragma comment(lib,"noloRuntime.lib文件路径").  
 
     5:注册回调函数,开启客户端.  
-        
-        ```
+    ```
         NOLO::disConnect_FunCallBack(disConnectFunc);  
         NOLO::connectSuccess_FunCallBack(connectFunc);  
         NOLO::expandDataNotify_FuncCallBack(expandFunc);  
         NOLO::open_Nolo_ZeroMQ();  
-        ```  
+     ```  
     6:正常使用nolo_api中的其他接口函数.  
     7:退出程序时,关闭客户端  
-
-         ```
+    ```
          NOLO::close_Nolo_ZeroMQ();
-         ```  
-
+    ```  
     <div><img width=400 heigh=200 src="https://github.com/NOLOVR/NOLO-Others/blob/master/Windows-SDK-Others/picture/8.jpg"></div>
     * :C#工程(VS开发工具)  
 
@@ -50,19 +47,19 @@
 
     4:注册回调函数，开启客户端  
 
-        ```
+    ```
         NOLOClient_V1_API.connectSuccess_FunCallBack(connectFunc);
         NOLOClient_V1_API.disConnect_FunCallBack(disConnectFunc);
         NOLOClient_V1_API.expandDataNotify_FuncCallBack(expandDataFunc);
         NOLOClient_V1_API.open_Nolo_ZeroMQ();
-        ```  
+    ```  
 
     5:正常使用nolo_api.cs中的其他接口函数  
     6:退出程序时，关闭客户端  
 
-        ```
+    ```
         NOLOClient_V1_API.close_Nolo_ZeroMQ();
-        ```  
+    ```  
     <div><img width=400 heigh=200 src="https://github.com/NOLOVR/NOLO-Others/blob/master/Windows-SDK-Others/picture/12.jpg"></div>
 
 #
