@@ -11,7 +11,7 @@
       While on other platforms, such as the Oculus platform, developers can use NOLO to provide the handle and helmet data access game platform.   
     * Game developers can use NOLO data to develop various platform games.  
       For Unity game developers can choose NOLO provided Unity SDK.  
-      For mobile game developers can choose NOLO provided Android SDK.
+      For mobile game developers can choose NOLO provided Android SDK.  
       For other game developers can choose NOLO provided Windows SDK.  
     * Application developers can use the data provided by NOLO to develop a variety of application       software.   
    
