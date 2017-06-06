@@ -1,5 +1,5 @@
 # Getting started   [中文](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted_CN.md)  
-* :Install[Nolo_driver_for_windows_setup.msi](https://github.com/NOLOVR/NOLO-Driver-For-Windows/raw/master/NOLOVR/Nolo_driver_for_windows_setup.msi) software.  
+* :Install[Nolo_driver_for_windows_setup.msi](https://github.com/NOLOVR/NOLO-Driver-For-Windows/raw/master/NOLOVR/Nolo_driver_for_windows_setup_0.0.22_beta.msi) software.  
 * :Open Nolo_driver_for_windows software.  
 * :C/C++Project(VS development tools)  
 
