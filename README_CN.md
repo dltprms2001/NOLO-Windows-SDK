@@ -18,6 +18,7 @@
 - [接口说明](https://github.com/NOLOVR/NOLO-Windows-SDK/wiki)  
 
 - [快速入门](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted_CN.md)  
-# 变化
+# 变化  
+V1
 - 添加双击手柄menu和system按键回调通知接口函数
 #
