@@ -22,6 +22,12 @@ namespace NOLO {
 		float x;
 		float y;
 		float z;
+		friend Vector3 operator -(const Vector3 _v1, const Vector3 _v2) {
+
+		Vector3 v;
+		v.x = _v1.x - _v2.x; v.y = _v1.y - _v2.y; v.z = _v1.z - _v2.z;
+		return v;
+		}
 	}Vector3;
 
 	typedef struct Quaternion
@@ -30,6 +36,23 @@ namespace NOLO {
 		float y;
 		float z;
 		float w;
+		friend Quaternion operator*(const Quaternion qa, const Quaternion qb) {
+
+		Quaternion qa_const_copy(qa), qb_const_copy(qb), qc;
+
+		qc.w = qa_const_copy.w*qb_const_copy.w - qa_const_copy.x *qb_const_copy.x
+			- qa_const_copy.y*qb_const_copy.y - qa_const_copy.z*qb_const_copy.z;
+
+		qc.x = qa_const_copy.x*qb_const_copy.w + qa_const_copy.w *qb_const_copy.x
+			+ qa_const_copy.y*qb_const_copy.z - qa_const_copy.z*qb_const_copy.y;
+
+		qc.y = qa_const_copy.y*qb_const_copy.w + qa_const_copy.w *qb_const_copy.y
+			+ qa_const_copy.z*qb_const_copy.x - qa_const_copy.x*qb_const_copy.z;
+
+		qc.z = qa_const_copy.z*qb_const_copy.w + qa_const_copy.w *qb_const_copy.z
+			+ qa_const_copy.x*qb_const_copy.y - qa_const_copy.y*qb_const_copy.x;
+		return qc;
+		}
 	}Quaternion;
     //nolo controller struct
 	typedef struct Controller
