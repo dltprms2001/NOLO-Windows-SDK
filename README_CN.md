@@ -18,6 +18,10 @@
 - [接口说明](https://github.com/NOLOVR/NOLO-Windows-SDK/wiki)  
 
 - [快速入门](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted_CN.md)  
+# 注意事项
+  * 双击手柄system按键将会标定手柄姿态.
+  * 对于SteamVR平台,双击手柄menu按键是一键转身功能,SteamVR中的手柄将会旋转180度,是因为我们已经在driver_nolo.dll里对手柄数据进行了坐标系转换和姿态变换,如果对接NOLO-Windows-SDK的开发者要添加一键转身功能时，需要对头部数据进行坐标系转换和姿态变换,这个可以参考[OSVR-NOLO](https://github.com/NOLOVR/NOLO-Others/tree/master/NOLO_OSVR_SteamvrDriver/Source_Code)的源码.
+#
 # 变化  
 V1
 - 添加双击手柄menu和system按键回调通知接口函数

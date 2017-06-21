@@ -17,7 +17,11 @@
    
 - [API channels](https://github.com/NOLOVR/NOLO-Windows-SDK/wiki)  
 
-- [Getting started](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted.md)  
+- [Getting started](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted.md) 
+# Precautions
+  * Double click on the handle The system button will calibrate the handle posture.
+  * For the SteamVR platform, double-click the handle menu button is a key to turn the function, SteamVR handle will be rotated 180 degrees, because we have driver_nolo.dll on the handle data conversion and attitude transformation, if the developer wants Add a key to turn the function, the need for coordinate data conversion and posture transformation,This can refer to [OSVR-NOLO] source
+#
 # Changes  
 V1
 - Add double click the menu button and system key callback notification interface function 
