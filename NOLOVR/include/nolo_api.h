@@ -131,6 +131,7 @@ namespace NOLO {
 		/**
 			expandData[0]>>0 :Double click Menu
 			expandData[0]>>1 :Double click System
+			expandData[1]:0 nomal ,1 Double click menu
 		*/
 		BYTE expandData[64];
 	}NoloData;
@@ -210,7 +211,7 @@ namespace NOLO {
 	NOLO_API ControllerStates _cdecl get_Nolo_ControllerStates(NoloDeviceType devicetype);
 	///get NOLO Pose By Device Type
 	NOLO_API Nolo_Pose _cdecl get_Nolo_Pose(NoloDeviceType devicetype);
-	///
+	///Interface of Double-click the menu key or the system key to notify in real time
 	NOLO_API  bool _cdecl expandDataNotify_FuncCallBack(expandMsg_FuncCallBack fun);
 }
 #endif // _NOLO_V1_API_H_

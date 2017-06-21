@@ -174,6 +174,7 @@ namespace NOLO
 			return byte ExpandData[64]
 			ExpandData[0]>>0 :Double click Menu
 			ExpandData[0]>>1 :Double click system
+			ExpandData[1]:0 nomal ,1 Double click menu
 		*/
         [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_ExpandData")]
         public static extern IntPtr get_Nolo_ExpandData();
@@ -200,7 +201,7 @@ namespace NOLO
 		///get NOLO Pose By Device Type
         [DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_Pose")]
         public static extern Nolo_Pose get_Nolo_Pose(NoloDeviceType devicetype);
-		
+		///Interface of Double-click the menu key or the system key to notify in real time
 		[DllImportAttribute("noloRuntime", CallingConvention = CallingConvention.Cdecl, EntryPoint = "expandDataNotify_FuncCallBack")]
         public static extern bool expandDataNotify_FuncCallBack(expandMsgFunc func);
     }
