@@ -24,7 +24,10 @@
 #
 # Changes  
 V1
-- Add double click the menu button and system key callback notification interface function 
+- 2017/5/31  
+  * Add double click the menu button and system key callback notification interface function 
+- 2017/7/7  
+  * Add noloRuntime receive data from NOLO PC software callback notification immediately
 #
 
         

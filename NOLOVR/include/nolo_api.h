@@ -175,6 +175,7 @@ namespace NOLO {
 	  DoubleClickSystem
     }ExpandMsgType;
 
+	typedef void(__cdecl * noloData_FuncCallBackNotify)(NoloData _noloData);
 	typedef void(__cdecl *expandMsg_FuncCallBack)(ExpandMsgType expandMsgType);
 	typedef void(__cdecl *funcCallBack)();
 	///Open the ZeroMQ client to recevice nolo data
@@ -205,7 +206,7 @@ namespace NOLO {
 	NOLO_API int _cdecl get_Nolo_Battery(NoloDeviceType deviceType);
 	//
 	NOLO_API UINT _cdecl get_Nolo_HMDTwoPointDriftAngle();
-	//
+	///get device version id by device type
 	NOLO_API int _cdecl get_Nolo_VersionID(NoloDeviceType devicetype);
 	///get NOLO Controller States By Device Type
 	NOLO_API ControllerStates _cdecl get_Nolo_ControllerStates(NoloDeviceType devicetype);
@@ -213,5 +214,7 @@ namespace NOLO {
 	NOLO_API Nolo_Pose _cdecl get_Nolo_Pose(NoloDeviceType devicetype);
 	///Interface of Double-click the menu key or the system key to notify in real time
 	NOLO_API  bool _cdecl expandDataNotify_FuncCallBack(expandMsg_FuncCallBack fun);
+	///I will call back when I receive the data from the NOLO software,Returns the function registration status
+	NOLO_API  bool _cdecl noloDataNotify_FuncCallBack(noloData_FuncCallBackNotify fun);
 }
 #endif // _NOLO_V1_API_H_
