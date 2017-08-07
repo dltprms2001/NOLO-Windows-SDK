@@ -1,4 +1,4 @@
-# NOLO-windows SDK   [中文]()
+# NOLO-windows SDK   [中文](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/NOLOVR/README%20_CN.md)
 
 ## NOLO USBHID SDK
     NOLO USBHID SDK directly reads NOLO tracking data through USB.  
