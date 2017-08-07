@@ -15,17 +15,20 @@
       对于其他游戏开发者可以选择NOLO提供的Windows SDK.  
     * 应用类的开发者可以使用NOLO提供的数据开发各种应用软件.  
    
-- [接口说明](https://github.com/NOLOVR/NOLO-Windows-SDK/wiki)  
 
 - [快速入门](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted_CN.md)  
-# 注意事项
-  * 双击手柄system按键将会标定手柄姿态.
-  * 对于SteamVR平台,双击手柄menu按键是一键转身功能,SteamVR中的手柄将会旋转180度,是因为我们已经在driver_nolo.dll里对手柄数据进行了坐标系转换和姿态变换,如果对接NOLO-Windows-SDK的开发者要添加一键转身功能时，需要对头部数据进行坐标系转换和姿态变换,这个可以参考[OSVR-NOLO](https://github.com/NOLOVR/NOLO-Others/tree/master/NOLO_OSVR_SteamvrDriver/Source_Code)的源码.
-#
+- [注意事项]()
+
 # 变化  
+NOLO ZEROMQ SDK:  
 V1
 - 2017/5/31 
   * 添加双击手柄menu和system按键回调通知接口函数  
 - 2017/7/7  
-  * 添加noloRuntime从NOLO PC 软件接收到数据立刻回调通知
+  * 添加noloRuntime从NOLO PC 软件接收到数据立刻回调通知  
+#
+NOLO USBHID SDK:  
+V1
+- 2017/8/7
+  * 发布
 #

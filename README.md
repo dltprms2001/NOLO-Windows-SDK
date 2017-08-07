@@ -15,19 +15,22 @@
       For other game developers can choose NOLO provided Windows SDK.  
     * Application developers can use the data provided by NOLO to develop a variety of application software.   
    
-- [API channels](https://github.com/NOLOVR/NOLO-Windows-SDK/wiki)  
 
 - [Getting started](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted.md) 
-# Precautions
-  * Double click on the handle The system button will calibrate the handle posture.
-  * For the SteamVR platform, double-click the handle menu button is a key to turn around the function, SteamVR handle will rotate 180 degrees, because we have driver_nolo.dll in the handle positioning data and rotating data conversion, if the developer to add a Key to turn the function, you need to change the head positioning data and rotating data, this can refer to [OSVR-NOLO](https://github.com/NOLOVR/NOLO-Others/tree/master/NOLO_OSVR_SteamvrDriver/Source_Code) source code.  
-#
+- [Notice]()
+ 
 # Changes  
+NOLO ZEROMQ SDK:  
 V1
 - 2017/5/31  
   * Add double click the menu button and system key callback notification interface function 
 - 2017/7/7  
-  * Add noloRuntime receive data from NOLO PC software callback notification immediately
+  * Add noloRuntime receive data from NOLO PC software callback notification immediately  
+#
+NOLO USBHID SDK:  
+V1
+- 2017/8/7
+  * release
 #
 
         
