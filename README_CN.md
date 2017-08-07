@@ -17,7 +17,7 @@
    
 
 - [快速入门](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted_CN.md)  
-- [注意事项]()
+- [注意事项](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/NOLOVR/NOLO_USBHID_SDK/Notice_CN.pdf)
 
 # 变化  
 NOLO ZEROMQ SDK:  

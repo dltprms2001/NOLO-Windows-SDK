@@ -17,7 +17,7 @@
    
 
 - [Getting started](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted.md) 
-- [Notice]()
+- [Notice](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/NOLOVR/NOLO_USBHID_SDK/Notice_EN.pdf)
  
 # Changes  
 NOLO ZEROMQ SDK:  
