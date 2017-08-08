@@ -63,7 +63,7 @@ namespace NOLO {
 		}
 		Vector3 operator / (const float rhs) {
 
-			long rhs_const_copy(rhs);
+			float rhs_const_copy(rhs);
 			return Vector3(x / rhs_const_copy, y / rhs_const_copy, z / rhs_const_copy);
 		}
 		Vector3 operator = (const Vector3 & rhs) {
@@ -418,6 +418,6 @@ namespace NOLO {
 	*【根据按键类型自定义一键转身热键（旋转180度）,不进行自定义按键时默认为双击menu按键】
 	******************************************************************************
 	*/
-	NOLO_API EBattery _cdecl set_Nolo_TurnAroundKey(EDoubleClickKeyType keyType);
+	NOLO_API void _cdecl set_Nolo_TurnAroundKey(EDoubleClickKeyType keyType);
 }
 #endif // _NOLO_API_Version2_H_
