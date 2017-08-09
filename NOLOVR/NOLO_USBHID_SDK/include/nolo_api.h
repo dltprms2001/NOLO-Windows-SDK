@@ -22,7 +22,7 @@ namespace NOLO {
 		float x;
 		float y;
 		float z;
-
+        #ifdef __Cplusplus
 		Vector3() {
 		
 			x = 0.0f;
@@ -90,6 +90,7 @@ namespace NOLO {
 			y /= len;
 			z /= len;
 		}
+	    #endif
 	}Vector3;
 
 	typedef struct Quaternion
@@ -98,6 +99,7 @@ namespace NOLO {
 		float y;
 		float z;
 		float w;
+		#ifdef __Cplusplus
 		Quaternion() {
 			x = 0.0f;
 			y = 0.0f;
@@ -127,6 +129,7 @@ namespace NOLO {
 				+ qa_const_copy.x*qb_const_copy.y - qa_const_copy.y*qb_const_copy.x;
 			return qc;
 		}
+	    #endif
 	}Quaternion;
 
     typedef enum EBattery
