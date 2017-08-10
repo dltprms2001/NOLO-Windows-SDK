@@ -1,24 +1,28 @@
 # NOLO-windows SDK   [中文](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/README_CN.md)
 
 - The role and significance of the NOLO Windows SDK  
-    * The SDK provides NOLO all the data, including real-time data such as helmets, handles, base stations and so on.  
+    * The SDK provides all data of NOLO, including real-time data from headset marker, controllers, base station and so on. 
     * PC helmet developers can use NOLO  data to access  a variety of gaming platforms.  
-      Which in the Steam platform, NOLO provided Steam Vr game handle driver, developers only need to access the head positioning data.  
-      While on other platforms, such as the Oculus platform, developers can use the handle and helmet data provided by NOLO to access game platform.  
-    * Mobile phone cast screen software category developers can use NOLO  data to access  a variety of   gaming platforms.  
-      NOLO provides helmet positioning data and rotation data,When the rotation data provided by the handset gyroscope is not stable enough, please select the rotation data provided by NOLO.  
-      Which in the Steam platform, NOLO provided Steam Vr game handle driver, developers only need to access the head positioning data.  
-      While on other platforms, such as the Oculus platform, developers can use NOLO to provide the handle and helmet data access game platform.   
-    * Game developers can use NOLO data to develop various platform games.  
-      For Unity game developers can choose NOLO provided Unity SDK.  
-      For mobile game developers can choose NOLO provided Android SDK.  
-      For other game developers can choose NOLO provided Windows SDK.  
+    * Mobile phone projection screen software developers can use NOLO data to access a variety of game platforms.  
+      NOLO provides tracking and rotation data of headset marker.Please use the rotation data provided by NOLO, when the rotation data provided by the handset gyroscope is not stable.  
+    * Game developers can use NOLO data to develop games on various platforms.
+      Unity game developers can choose Unity SDK provided by NOLO.
+      Mobile game developers can choose Android SDK provided by NOLO.
+      Other game developers can choose Windows SDK provided by NOLO.  
     * Application developers can use the data provided by NOLO to develop a variety of application software.   
-   
+## NOLO USBHID SDK
+    NOLO USBHID SDK directly reads NOLO tracking data through USB.  
+     Under this situation,you do not need to install NOLO PC software when you're developing.
+#
+## NOLO ZEROMQ SDK
+    NOLO ZEROMQ SDK reads data on NOLO PC software via ZEROMQ network transfer protocol  
+    Under this situation,you need to install NOLO PC software when you're developing.  
+    nolo pc software acquiescently provides steamvr controller driver. 
+#
 
-- [Getting started](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted.md) 
-- [Notice](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/NOLOVR/NOLO_USBHID_SDK/Notice_EN.pdf)
- 
+# [Getting started](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted.md) 
+# [Notice](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/NOLOVR/NOLO_USBHID_SDK/Notice_EN.pdf)
+# [Use case](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/Examples)
 # Changes  
 NOLO ZEROMQ SDK:  
 V1
