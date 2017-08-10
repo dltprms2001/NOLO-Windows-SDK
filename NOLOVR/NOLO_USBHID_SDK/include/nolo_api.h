@@ -22,75 +22,6 @@ namespace NOLO {
 		float x;
 		float y;
 		float z;
-        #ifdef __Cplusplus
-		Vector3() {
-		
-			x = 0.0f;
-			y = 0.0f;
-			z = 0.0f;
-		}
-
-		Vector3(float _x, float _y, float _z) {
-
-			x = _x;
-			y = _y;
-			z = _z;
-		}
-
-		Vector3 operator -(const Vector3 rhs) {
-			Vector3 rhs_const_copy(rhs);
-			return Vector3(x - rhs.x, y - rhs.y, z - rhs.z);
-		}
-		float operator *(const Vector3 rhs) {
-
-			Vector3 rhs_const_copy(rhs);
-			return x*rhs_const_copy.x + y*rhs_const_copy.y + z*rhs_const_copy.z;
-		}
-		Vector3 operator *(const float rhs) {
-
-			float rhs_const_copy(rhs);
-			return Vector3(x*rhs_const_copy, y*rhs_const_copy, z*rhs_const_copy);
-		}
-		Vector3 operator +(const Vector3 rhs) {
-
-			Vector3 rhs_const_copy(rhs);
-			return Vector3(x + rhs_const_copy.x, y + rhs_const_copy.y, z + rhs_const_copy.z);
-		}
-		Vector3 operator -(const float rhs) {
-
-			float rhs_const_copy(rhs);
-			return Vector3(x - rhs_const_copy, y - rhs_const_copy, z - rhs_const_copy);
-		}
-		Vector3 operator / (const float rhs) {
-
-			float rhs_const_copy(rhs);
-			return Vector3(x / rhs_const_copy, y / rhs_const_copy, z / rhs_const_copy);
-		}
-		Vector3 operator = (const Vector3 & rhs) {
-
-			Vector3 rhs_const_copy(rhs);
-			x = rhs_const_copy.x;
-			y = rhs_const_copy.y;
-			z = rhs_const_copy.z;
-			return *this;
-		}
-	    bool operator == (const Vector3 & rhs) {
-	
-		    Vector3 rhs_const_copy(rhs);
-		    if (x == rhs_const_copy.x && y == rhs_const_copy.y && z == rhs_const_copy.z) return true;
-		    else return false;
-	    }
-		float length() {
-			return sqrt(x * x + y * y + z * z);
-		}
-
-		void normalize() {
-			float len = length();
-			x /= len;
-			y /= len;
-			z /= len;
-		}
-	    #endif
 	}Vector3;
 
 	typedef struct Quaternion
@@ -99,37 +30,7 @@ namespace NOLO {
 		float y;
 		float z;
 		float w;
-		#ifdef __Cplusplus
-		Quaternion() {
-			x = 0.0f;
-			y = 0.0f;
-			z = 0.0f;
-			w = 1.0f;
-		}
-		Quaternion(const float _x, const  float _y, const float _z, const float _w) {
-			x = _x;
-			y = _y;
-			z = _z;
-			w = _w;
-		}
-		friend Quaternion operator*(const Quaternion qa, const Quaternion qb) {
-
-			Quaternion qa_const_copy(qa), qb_const_copy(qb), qc;
-
-			qc.w = qa_const_copy.w*qb_const_copy.w - qa_const_copy.x *qb_const_copy.x
-				- qa_const_copy.y*qb_const_copy.y - qa_const_copy.z*qb_const_copy.z;
-
-			qc.x = qa_const_copy.x*qb_const_copy.w + qa_const_copy.w *qb_const_copy.x
-				+ qa_const_copy.y*qb_const_copy.z - qa_const_copy.z*qb_const_copy.y;
-
-			qc.y = qa_const_copy.y*qb_const_copy.w + qa_const_copy.w *qb_const_copy.y
-				+ qa_const_copy.z*qb_const_copy.x - qa_const_copy.x*qb_const_copy.z;
-
-			qc.z = qa_const_copy.z*qb_const_copy.w + qa_const_copy.w *qb_const_copy.z
-				+ qa_const_copy.x*qb_const_copy.y - qa_const_copy.y*qb_const_copy.x;
-			return qc;
-		}
-	    #endif
+		
 	}Quaternion;
 
     typedef enum EBattery
