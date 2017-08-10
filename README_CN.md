@@ -6,7 +6,7 @@
       NOLO提供了头盔的定位数据和姿态数据,当手机陀螺仪提供的姿态数据不够稳定时请选择NOLO提供的姿态数据.  
     * 游戏类的开发者可以使用NOLO提供的数据开发各平台游戏.  
       对于Unity游戏开发者可以选择NOLO提供的Unity SDK.  
-      对于Mobile游戏开发者可以选择NOLO提供的Android SDK.
+      对于Mobile游戏开发者可以选择NOLO提供的Android SDK.  
       对于其他游戏开发者可以选择NOLO提供的Windows SDK.  
     * 应用类的开发者可以使用NOLO提供的数据开发各种应用软件. 
 ## NOLO USBHID SDK
