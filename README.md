@@ -5,9 +5,9 @@
     * PC helmet developers can use NOLO  data to access  a variety of gaming platforms.  
     * Mobile phone projection screen software developers can use NOLO data to access a variety of game platforms.  
       NOLO provides tracking and rotation data of headset marker.Please use the rotation data provided by NOLO, when the rotation data provided by the handset gyroscope is not stable.  
-    * Game developers can use NOLO data to develop games on various platforms.
-      Unity game developers can choose Unity SDK provided by NOLO.
-      Mobile game developers can choose Android SDK provided by NOLO.
+    * Game developers can use NOLO data to develop games on various platforms.  
+      Unity game developers can choose Unity SDK provided by NOLO.  
+      Mobile game developers can choose Android SDK provided by NOLO.  
       Other game developers can choose Windows SDK provided by NOLO.  
     * Application developers can use the data provided by NOLO to develop a variety of application software.   
 ## NOLO USBHID SDK
