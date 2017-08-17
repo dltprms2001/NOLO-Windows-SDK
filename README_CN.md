@@ -9,13 +9,14 @@
       对于Mobile游戏开发者可以选择NOLO提供的Android SDK.  
       对于其他游戏开发者可以选择NOLO提供的Windows SDK.  
     * 应用类的开发者可以使用NOLO提供的数据开发各种应用软件. 
-## NOLO USBHID SDK
-    NOLO USBHID SDK直接通过USB线读取NOLO定位数据，开发时不需要安装NOLO PC软件.
+## NOLO USBHID SDK [快速入门](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/HIDGetStarted_CN.md) 
+    NOLO USBHID SDK直接通过USB线读取NOLO定位数据，开发时不需要安装NOLO PC软件.  
+    
 #
-## NOLO ZEROMQ SDK
+## NOLO ZEROMQ SDK  [快速入门](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted_CN.md) 
     NOLO ZEROMQ SDK通过ZEROMQ网络传输协议从NOLO PC软件读取数据，开发时需要安装NOLO PC软件.    
     NOLO PC软件默认提供SteamVR手柄驱动.  
-#  [快速入门](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted_CN.md)  
+ 
 #  [注意事项](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/NOLOVR/NOLO_USBHID_SDK/Notice_CN.pdf)
 #  [使用案例](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/Examples)
 # 变化  
