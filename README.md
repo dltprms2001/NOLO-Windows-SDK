@@ -10,17 +10,17 @@
       Mobile game developers can choose Android SDK provided by NOLO.  
       Other game developers can choose Windows SDK provided by NOLO.  
     * Application developers can use the data provided by NOLO to develop a variety of application software.   
-## NOLO USBHID SDK
+## NOLO USBHID SDK [Getting started](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/HIDGetStarted.md) 
     NOLO USBHID SDK directly reads NOLO tracking data through USB.  
      Under this situation,you do not need to install NOLO PC software when you're developing.
 #
-## NOLO ZEROMQ SDK
+## NOLO ZEROMQ SDK [Getting started](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted.md) 
     NOLO ZEROMQ SDK reads data on NOLO PC software via ZEROMQ network transfer protocol  
     Under this situation,you need to install NOLO PC software when you're developing.  
     nolo pc software acquiescently provides steamvr controller driver. 
 #
 
-# [Getting started](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted.md) 
+
 # [Notice](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/NOLOVR/NOLO_USBHID_SDK/Notice_EN.pdf)
 # [Use case](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/Examples)
 # Changes  
