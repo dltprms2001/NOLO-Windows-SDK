@@ -331,9 +331,7 @@ void NOLOTrackedDevice::UpdateControllerState(CtrData & cd)
 
 void NOLOTrackedDevice::UpdateTrackingState(CtrData & data)
 {
-	static int n = 0;
-
-	m_Pose.poseTimeOffset = -0.016f;
+	m_Pose.poseTimeOffset = 0.0f;
 	m_Pose.qWorldFromDriverRotation.w = 1.0;
 	m_Pose.qWorldFromDriverRotation.x = 0.0;
 	m_Pose.qWorldFromDriverRotation.y = 0.0;
@@ -375,50 +373,14 @@ void NOLOTrackedDevice::UpdateTrackingState(CtrData & data)
 
 	m_Pose.deviceIsConnected = data.isConnect;
 
-	if (data.buttons & NOLO_BUTTON_2) {
 
-		flag_TriggerDown = true;
-	}
-	if (flag_TriggerDown && (data.buttons & NOLO_BUTTON_2) == 0) {
+	m_Pose.vecVelocity[0] = data.vecVelocity[0];
+	m_Pose.vecVelocity[1] = data.vecVelocity[1];
+	m_Pose.vecVelocity[2] = data.vecVelocity[2];
 
-		flag_TriggerDown = false;
-		flag_Throw = true;
-
-		//std::thread ta(&NOLOTrackedDevice::Test,this);
-		//ta.detach();
-	}
-
-	if (flag_Throw ) {
-
-	
-
-		m_Pose.vecVelocity[0] = data.vecVelocity[0];
-		m_Pose.vecVelocity[1] = data.vecVelocity[1];
-		m_Pose.vecVelocity[2] = data.vecVelocity[2];
-
-		m_Pose.vecAngularVelocity[0] = data.vecAngularVelocity[0];
-		m_Pose.vecAngularVelocity[1] = data.vecAngularVelocity[1];
-		m_Pose.vecAngularVelocity[2] = data.vecAngularVelocity[2];
-
-		n++;
-		if (m_Pose.vecVelocity[0] > 0 && m_Pose.vecVelocity[1] > 0 && n > 10 ) {
-			n = 0;
-			flag_Throw = false;
-		}
-		//flag_Throw = false;
-		
-		//DriverLog("vecVelocity::%f         %f        %f  £¬vecAngularVelocity : %f      %f      %f\n", m_Pose.vecVelocity[0], m_Pose.vecVelocity[1], m_Pose.vecVelocity[2], m_Pose.vecAngularVelocity[0], m_Pose.vecAngularVelocity[1], m_Pose.vecAngularVelocity[2]);
-	
-	}
-	else
-	{
-		m_Pose.vecVelocity[0] = 0.0f;
-		m_Pose.vecVelocity[1] = 0.0f;
-		m_Pose.vecVelocity[2] = 0.0f;
-		m_Pose.vecAngularVelocity[0] = 0.0f;
-		m_Pose.vecAngularVelocity[1] = 0.0f;
-		m_Pose.vecAngularVelocity[2] = 0.0f;
-	}
+	m_Pose.vecAngularVelocity[0] = data.vecAngularVelocity[0];
+	m_Pose.vecAngularVelocity[1] = data.vecAngularVelocity[1];
+	m_Pose.vecAngularVelocity[2] = data.vecAngularVelocity[2];
 
 	m_pDriverHost->TrackedDevicePoseUpdated(m_unSteamVRTrackedDeviceId, m_Pose);
 }
