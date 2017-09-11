@@ -34,7 +34,9 @@ V1
 NOLO USBHID SDK:  
 V1
 - 2017/8/7
-  * release
+  * Release  
+- 2017/9/11  
+  * Provide velocity and angular velocity
 #
 
         
