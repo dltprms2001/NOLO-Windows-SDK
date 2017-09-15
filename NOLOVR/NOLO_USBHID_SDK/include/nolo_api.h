@@ -99,7 +99,7 @@ namespace NOLO {
 	    Vector3 vecAngularAcceleration;
 		 /*
 		  0：Be blocked,【被遮挡】
-		  1：normal
+		  1：normal or Lost synchronization(Device unpaired)
 		*/
 		int state;
 		
@@ -136,7 +136,7 @@ namespace NOLO {
 		Vector3 vecAngularAcceleration;
         /*
 		  0：Be blocked
-		  1：normal
+		  1：normal or Lost synchronization(Device unpaired)
 		*/
 		int state;
 	}HMD;
