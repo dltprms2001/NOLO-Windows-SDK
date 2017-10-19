@@ -98,8 +98,8 @@ namespace NOLO {
 	     * that axis in radians/second^2. */
 	    Vector3 vecAngularAcceleration;
 		 /*
-		  0：Be blocked,【被遮挡】
-		  1：normal or Lost synchronization(Device unpaired)
+		   state & 1 ==1 ：normal  【正常】，state & 1 ==0： Be blocked 【被遮挡】
+		   state>>1 & 1 ==1：synchronous 【同步】, state>>1 & 1 ==0: Loss of synchronization 【丢失同步】
 		*/
 		int state;
 		
@@ -135,8 +135,8 @@ namespace NOLO {
 		* that axis in radians/second^2. */
 		Vector3 vecAngularAcceleration;
         /*
-		  0：Be blocked
-		  1：normal or Lost synchronization(Device unpaired)
+		   state & 1 ==1 ：normal  【正常】，state & 1 ==0： Be blocked 【被遮挡】
+		   state>>1 & 1 ==1：synchronous 【同步】, state>>1 & 1 ==0: Loss of synchronization 【丢失同步】
 		*/
 		int state;
 	}HMD;
@@ -177,6 +177,13 @@ namespace NOLO {
 	  DoubleClickSystemRecenter
 	  
     }ExpandMsgType;
+	
+	typedef enum EPlayMode {
+	    //Place the base station horizontally【平放基站模式】
+		HorizontalMode = 0,
+		//Place the base station on the ceiling【悬挂基站到天花板模式】
+		CeilingMode
+	}NOLOMode;
 	
 	typedef void(__cdecl * noloDataNotifyCallBack)(NoloData _noloData , void * context);
 	typedef void(__cdecl *funcCallBack)(void * context);
@@ -323,5 +330,16 @@ namespace NOLO {
 	******************************************************************************
 	*/
 	NOLO_API void _cdecl set_Nolo_TurnAroundKey(EDoubleClickKeyType keyType);
+	/*
+	******************************************************************************
+	* Function description：Customize the Flat Mode and Ceiling Mode according to EPlay Model.
+	* Parameter：Parameter Type is an enumeration type
+	* Return Value：NULL
+	* Remarks：NULL
+	*【根据EPlayModel类型自定义平放基站模式与悬挂基站模式】
+	******************************************************************************
+	*/
+	NOLO_API void _cdecl set_Nolo_PlayMode(EPlayMode  Type) ;
+	
 }
 #endif // _NOLO_API_Version2_H_

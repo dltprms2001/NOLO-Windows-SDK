@@ -1,56 +1,45 @@
 #include "NOLOTrackedDevice.h"
-#include <sstream>
-#include "driverlog.h"
-#include <thread>
-static void GenerateSerialNumber(char *p, int psize, int controller)
+
+
+
+NOLOTrackedDevice::NOLOTrackedDevice(std::string std, int mid)
 {
-	//_snprintf(p, psize, "nolo_controller_%d", controller);
-	sprintf(p, "NOLO_Tracking_controller_%d", controller);
-}
-NOLOTrackedDevice::NOLOTrackedDevice(vr::IServerDriverHost *pDriverHost, int id) :m_pDriverHost(pDriverHost)
-, m_nBase(1)
-, m_nId(id)
-, m_ucPoseSequenceNumber(0)
-, m_eHemisphereTrackingState(k_eHemisphereTrackingDisabled)
-, m_bCalibrated(false)
-, m_pAlignmentPartner(NULL)
-, m_eSystemButtonState(k_eIdle)
-, m_unSteamVRTrackedDeviceId(vr::k_unTrackedDeviceIndexInvalid)
-{
-	char buf[256];
-	GenerateSerialNumber(buf, sizeof(buf), m_nId);
+	memset(&posR, 0, sizeof(posR));
+	rotQ.x = 0; rotQ.y = 1; rotQ.z = 0; rotQ.w = 0;
+	IsTurnAround = false;
+	m_ulPropertyContainer = vr::k_ulInvalidPropertyContainer;
+	m_sSerialNumber = std;
+	m_sModelNumber = "vr_controller_vive_1_5";
+	m_id = mid;
 
-	m_strSerialNumber = buf;
-	m_strModelNumber = m_nId;
-
-	flag_TriggerDown = false;
-	flag_Throw = false;
-	memset(&m_ControllerState, 0, sizeof(m_ControllerState));
-	memset(&m_Pose, 0, sizeof(m_Pose));
-	m_Pose.result = vr::TrackingResult_Calibrating_InProgress;
-
-	m_firmware_revision = 1313 + m_nId;
-	m_hardware_revision = 1315 + m_nId;
 }
 
 NOLOTrackedDevice::~NOLOTrackedDevice()
 {
 }
 
-const char * NOLOTrackedDevice::GetSerialNumber()
+EVRInitError NOLOTrackedDevice::Activate(uint32_t unObjectId)
 {
-	return m_strSerialNumber.c_str();
-}
+	m_unObjectId = unObjectId;
+	m_ulPropertyContainer = vr::VRProperties()->TrackedDeviceToPropertyContainer(m_unObjectId);
 
-vr::EVRInitError NOLOTrackedDevice::Activate(uint32_t unObjectId)
-{
-	m_unSteamVRTrackedDeviceId = unObjectId;
-	return vr::VRInitError_None;
+	vr::VRProperties()->SetStringProperty(m_ulPropertyContainer, Prop_SerialNumber_String, m_sSerialNumber.c_str());
+	vr::VRProperties()->SetStringProperty(m_ulPropertyContainer, Prop_ModelNumber_String, m_sModelNumber.c_str());
+	vr::VRProperties()->SetStringProperty(m_ulPropertyContainer, Prop_RenderModelName_String, m_sModelNumber.c_str());
+	vr::VRProperties()->SetStringProperty(m_ulPropertyContainer, Prop_ManufacturerName_String, "HTC");
+
+	uint64_t reval= vr::ButtonMaskFromId(vr::k_EButton_ApplicationMenu) |
+		vr::ButtonMaskFromId(vr::k_EButton_SteamVR_Touchpad) |
+		vr::ButtonMaskFromId(vr::k_EButton_SteamVR_Trigger) |
+		vr::ButtonMaskFromId(vr::k_EButton_System) |
+		vr::ButtonMaskFromId(vr::k_EButton_Grip);
+	vr::VRProperties()->SetUint64Property(m_ulPropertyContainer, Prop_SupportedButtons_Uint64, reval);
+	return VRInitError_None;
 }
 
 void NOLOTrackedDevice::Deactivate()
 {
-	m_unSteamVRTrackedDeviceId = vr::k_unTrackedDeviceIndexInvalid;
+	m_unObjectId = k_unTrackedDeviceIndexInvalid;
 }
 
 void NOLOTrackedDevice::EnterStandby()
@@ -73,265 +62,14 @@ void NOLOTrackedDevice::DebugRequest(const char * pchRequest, char * pchResponse
 		pchResponseBuffer[0] = 0;
 }
 
-vr::DriverPose_t NOLOTrackedDevice::GetPose()
+DriverPose_t NOLOTrackedDevice::GetPose()
 {
 	return m_Pose;
 }
 
-bool NOLOTrackedDevice::GetBoolTrackedDeviceProperty(vr::ETrackedDeviceProperty prop, vr::ETrackedPropertyError * pError)
+DriverPose_t NOLOTrackedDevice::GetPose(Controller ctrData)
 {
-	*pError = vr::TrackedProp_ValueNotProvidedByDevice;
-	return false;
-}
-
-float NOLOTrackedDevice::GetFloatTrackedDeviceProperty(vr::ETrackedDeviceProperty prop, vr::ETrackedPropertyError * pError)
-{
-	*pError = vr::TrackedProp_ValueNotProvidedByDevice;
-	return 0.0f;
-}
-
-int32_t NOLOTrackedDevice::GetInt32TrackedDeviceProperty(vr::ETrackedDeviceProperty prop, vr::ETrackedPropertyError * pError)
-{
-	int32_t nRetVal = 0;
-	vr::ETrackedPropertyError error = vr::TrackedProp_UnknownProperty;
-	switch (prop)
-	{
-	case vr::Prop_DeviceClass_Int32:
-		nRetVal = vr::TrackedDeviceClass_Controller;
-		error = vr::TrackedProp_Success;
-		break;
-
-	case vr::Prop_Axis0Type_Int32:
-		nRetVal = vr::k_eControllerAxis_Joystick;
-		error = vr::TrackedProp_Success;
-		break;
-
-	case vr::Prop_Axis1Type_Int32:
-		nRetVal = vr::k_eControllerAxis_Trigger;
-		error = vr::TrackedProp_Success;
-		break;
-
-	case vr::Prop_Axis2Type_Int32:
-	case vr::Prop_Axis3Type_Int32:
-	case vr::Prop_Axis4Type_Int32:
-		error = vr::TrackedProp_ValueNotProvidedByDevice;
-		break;
-	}
-
-	*pError = error;
-	return nRetVal;
-}
-
-uint64_t NOLOTrackedDevice::GetUint64TrackedDeviceProperty(vr::ETrackedDeviceProperty prop, vr::ETrackedPropertyError * pError)
-{
-	uint64_t ulRetVal = 0;
-	vr::ETrackedPropertyError error = vr::TrackedProp_ValueNotProvidedByDevice;
-	switch (prop)
-	{
-	case vr::Prop_CurrentUniverseId_Uint64:
-	case vr::Prop_PreviousUniverseId_Uint64:
-		error = vr::TrackedProp_ValueNotProvidedByDevice;
-		break;
-
-	case vr::Prop_SupportedButtons_Uint64:
-		ulRetVal =
-			vr::ButtonMaskFromId(vr::k_EButton_ApplicationMenu) |
-			vr::ButtonMaskFromId(vr::k_EButton_SteamVR_Touchpad) |
-			vr::ButtonMaskFromId(vr::k_EButton_SteamVR_Trigger) |
-			vr::ButtonMaskFromId(vr::k_EButton_System) |
-			vr::ButtonMaskFromId(vr::k_EButton_Grip);
-
-		error = vr::TrackedProp_Success;
-		break;
-
-	case vr::Prop_HardwareRevision_Uint64:
-		ulRetVal = m_hardware_revision;
-		error = vr::TrackedProp_Success;
-		break;
-
-	case vr::Prop_FirmwareVersion_Uint64:
-		ulRetVal = m_firmware_revision;
-		error = vr::TrackedProp_Success;
-		break;
-
-	}
-
-	*pError = error;
-	return ulRetVal;
-}
-
-vr::HmdMatrix34_t NOLOTrackedDevice::GetMatrix34TrackedDeviceProperty(vr::ETrackedDeviceProperty prop, vr::ETrackedPropertyError * pError)
-{
-	return vr::HmdMatrix34_t();
-}
-
-uint32_t NOLOTrackedDevice::GetStringTrackedDeviceProperty(vr::ETrackedDeviceProperty prop, char * pchValue, uint32_t unBufferSize, vr::ETrackedPropertyError * pError)
-{
-	std::ostringstream ssRetVal;
-	switch (prop)
-	{
-	case vr::Prop_SerialNumber_String:
-		ssRetVal << m_strSerialNumber;
-		break;
-
-	case vr::Prop_RenderModelName_String:
-		// The {hydra} syntax lets us refer to rendermodels that are installed
-		// in the driver's own resources/rendermodels directory.  The driver can
-		// still refer to SteamVR models like "generic_hmd".
-		ssRetVal << "vr_controller_vive_1_5";
-		break;
-
-	case vr::Prop_ManufacturerName_String:
-		ssRetVal << "HTC";
-		break;
-
-	case vr::Prop_ModelNumber_String:
-		ssRetVal << "NOLO Tracking controller";
-		break;
-
-	case vr::Prop_TrackingFirmwareVersion_String:
-		ssRetVal << "cd.firmware_revision=" << m_firmware_revision;
-		break;
-
-	case vr::Prop_HardwareRevision_String:
-		ssRetVal << "cd.hardware_revision=" << m_hardware_revision;
-		break;
-	}
-
-	std::string sRetVal = ssRetVal.str();
-	if (sRetVal.empty())
-	{
-		*pError = vr::TrackedProp_ValueNotProvidedByDevice;
-		return 0;
-	}
-	else if (sRetVal.size() + 1 > unBufferSize)
-	{
-		*pError = vr::TrackedProp_BufferTooSmall;
-		return sRetVal.size() + 1;  // caller needs to know how to size buffer
-	}
-	else
-	{
-		DriverLog(sRetVal.c_str());
-		_snprintf(pchValue, unBufferSize, sRetVal.c_str());
-		*pError = vr::TrackedProp_Success;
-		return sRetVal.size() + 1;
-	}
-}
-
-vr::VRControllerState_t NOLOTrackedDevice::GetControllerState()
-{
-	return vr::VRControllerState_t();
-}
-
-bool NOLOTrackedDevice::TriggerHapticPulse(uint32_t unAxisId, uint16_t usPulseDurationMicroseconds)
-{
-
-	//DriverLog("ZhenDong:====%d========================================\n", usPulseDurationMicroseconds);
-
-	int n = usPulseDurationMicroseconds/40;
-	if (n>50) {
-	
-		n = 50;
-	}
-
-	if (m_nId == 0) {
-		
-		set_Nolo_TriggerHapticPulse(NoloDeviceType::LeftControllerDevice, 50+n);
-	}
-	else if (m_nId == 1)
-	{
-		set_Nolo_TriggerHapticPulse(NoloDeviceType::RightControllerDevice,50+n);
-	}
-	return true;
-}
-
-void NOLOTrackedDevice::RunFrame(CtrData & data)
-{
-	if (m_unSteamVRTrackedDeviceId != vr::k_unTrackedDeviceIndexInvalid)
-	{
-		UpdateTrackingState(data);
-		UpdateControllerState(data);
-	
-		//m_pDriverHost->TrackedDevicePoseUpdated(m_unSteamVRTrackedDeviceId, GetPose());
-	}
-}
-
-void NOLOTrackedDevice::SendButtonUpdates(ButtonUpdate ButtonEvent, uint64_t ulMask)
-{
-	if (!ulMask)
-		return;
-
-	for (int i = 0; i< vr::k_EButton_Max; i++)
-	{
-		vr::EVRButtonId button = (vr::EVRButtonId)i;
-
-		uint64_t bit = ButtonMaskFromId(button);
-
-		if ((bit & ulMask))
-		{
-			(m_pDriverHost->*ButtonEvent)(m_unSteamVRTrackedDeviceId, button, 0.0);
-		}
-	}
-}
-
-void NOLOTrackedDevice::UpdateControllerState(CtrData & cd)
-{
-	vr::VRControllerState_t NewState = { 0 };
-	NewState.unPacketNum = m_ControllerState.unPacketNum + 1;
-	if (cd.buttons & NOLO_BUTTON_1) {
-		NewState.ulButtonPressed |= vr::ButtonMaskFromId(k_EButton_Button1);
-	}
-	if (cd.buttons & NOLO_BUTTON_2) {
-		NewState.ulButtonTouched |= vr::ButtonMaskFromId(k_EButton_Button2);
-	}
-	if (cd.buttons & NOLO_BUTTON_3) {
-		NewState.ulButtonPressed |= vr::ButtonMaskFromId(k_EButton_Button3);
-	}
-
-	if (cd.buttons & NOLO_BUTTON_4) {
-		NewState.ulButtonPressed |= vr::ButtonMaskFromId(k_EButton_Button4);
-	}
-	if (cd.buttons & NOLO_BUTTON_5) {
-		NewState.ulButtonPressed |= vr::ButtonMaskFromId(k_EButton_Button5);
-	}
-
-	// All pressed buttons are touched
-	if (cd.buttons & NOLO_BUTTON_1)
-		NewState.ulButtonPressed |= vr::ButtonMaskFromId(vr::k_EButton_Axis0);
-	if (cd.buttons & NOLO_BUTTON_2)
-		NewState.ulButtonTouched |= vr::ButtonMaskFromId(vr::k_EButton_Axis1);
-	if (cd.buttons & NOLO_BUTTON_2)
-		NewState.ulButtonPressed |= vr::ButtonMaskFromId(vr::k_EButton_Axis1);
-	if (cd.touch)
-		NewState.ulButtonTouched |= vr::ButtonMaskFromId(vr::k_EButton_Axis0);
-
-	NewState.ulButtonTouched |= NewState.ulButtonPressed;
-
-	uint64_t ulChangedTouched = NewState.ulButtonTouched ^ m_ControllerState.ulButtonTouched;
-	uint64_t ulChangedPressed = NewState.ulButtonPressed ^ m_ControllerState.ulButtonPressed;
-
-	SendButtonUpdates(&vr::IServerDriverHost::TrackedDeviceButtonTouched, ulChangedTouched & NewState.ulButtonTouched);
-	SendButtonUpdates(&vr::IServerDriverHost::TrackedDeviceButtonPressed, ulChangedPressed & NewState.ulButtonPressed);
-	SendButtonUpdates(&vr::IServerDriverHost::TrackedDeviceButtonUnpressed, ulChangedPressed & ~NewState.ulButtonPressed);
-	SendButtonUpdates(&vr::IServerDriverHost::TrackedDeviceButtonUntouched, ulChangedTouched & ~NewState.ulButtonTouched);
-
-
-	NewState.rAxis[0].x = cd.joyStick_X;
-	NewState.rAxis[0].y = cd.joyStick_Y;
-	NewState.rAxis[1].x = cd.buttons & NOLO_BUTTON_2;
-	NewState.rAxis[1].y = 0.0f;
-
-	if (NewState.rAxis[0].x != m_ControllerState.rAxis[0].x || NewState.rAxis[0].y != m_ControllerState.rAxis[0].y)
-		m_pDriverHost->TrackedDeviceAxisUpdated(m_unSteamVRTrackedDeviceId, 0, NewState.rAxis[0]);
-	if (NewState.rAxis[1].x != m_ControllerState.rAxis[1].x)
-		m_pDriverHost->TrackedDeviceAxisUpdated(m_unSteamVRTrackedDeviceId, 1, NewState.rAxis[1]);
-
-	m_ControllerState = NewState;
-}
-
-void NOLOTrackedDevice::UpdateTrackingState(CtrData & data)
-{
-	m_Pose.poseTimeOffset = 0.0f;
+	m_Pose.poseTimeOffset = -0.016f;
 	m_Pose.qWorldFromDriverRotation.w = 1.0;
 	m_Pose.qWorldFromDriverRotation.x = 0.0;
 	m_Pose.qWorldFromDriverRotation.y = 0.0;
@@ -359,34 +97,203 @@ void NOLOTrackedDevice::UpdateTrackingState(CtrData & data)
 	m_Pose.willDriftInYaw = false;
 	m_Pose.shouldApplyHeadModel = false;
 
-	m_Pose.poseIsValid = data.status;//这是控制未就绪的地方
+	m_Pose.poseIsValid = true;//这是控制未就绪的地方
+	m_Pose.deviceIsConnected = true;
 
+	m_Pose.vecPosition[0] = ctrData.ControllerPosition.x;
+	m_Pose.vecPosition[1] = ctrData.ControllerPosition.y;
+	m_Pose.vecPosition[2] = -ctrData.ControllerPosition.z;
+	m_Pose.qRotation.w = -ctrData.ControllerRotation.w;
+	m_Pose.qRotation.x = ctrData.ControllerRotation.x;
+	m_Pose.qRotation.y = ctrData.ControllerRotation.y;
+	m_Pose.qRotation.z = -ctrData.ControllerRotation.z;
+	m_Pose.vecVelocity[0] = ctrData.vecVelocity.x;
+	m_Pose.vecVelocity[1] = ctrData.vecVelocity.y;
+	m_Pose.vecVelocity[2] = ctrData.vecVelocity.z;
+	m_Pose.vecAngularVelocity[0] = ctrData.vecAngularVelocity.x;
+	m_Pose.vecAngularVelocity[1] = ctrData.vecAngularVelocity.y;
+	m_Pose.vecAngularVelocity[2] = ctrData.vecAngularVelocity.z;
 
-	//data
-	m_Pose.vecPosition[0] = data.pos[0];
-	m_Pose.vecPosition[1] = data.pos[1];
-	m_Pose.vecPosition[2] = -data.pos[2];
-	m_Pose.qRotation.w = -data.rot_quat[0];
-	m_Pose.qRotation.x = data.rot_quat[1];
-	m_Pose.qRotation.y = data.rot_quat[2];
-	m_Pose.qRotation.z = -data.rot_quat[3];
+	DQuaternion rot(ctrData.ControllerRotation);
+	if (IsTurnAround) {
 
-	m_Pose.deviceIsConnected = data.isConnect;
+		rot = rotQ * rot;
+		m_Pose.vecPosition[0] = 2 * posR.x - m_Pose.vecPosition[0];
+		m_Pose.vecPosition[2] = -(2 * posR.z + m_Pose.vecPosition[2]);
 
+		m_Pose.qRotation.w = -rot.w;
+		m_Pose.qRotation.x = rot.x;
+		m_Pose.qRotation.y = rot.y;
+		m_Pose.qRotation.z = -rot.z;
 
-	m_Pose.vecVelocity[0] = data.vecVelocity[0];
-	m_Pose.vecVelocity[1] = data.vecVelocity[1];
-	m_Pose.vecVelocity[2] = data.vecVelocity[2];
-
-	m_Pose.vecAngularVelocity[0] = data.vecAngularVelocity[0];
-	m_Pose.vecAngularVelocity[1] = data.vecAngularVelocity[1];
-	m_Pose.vecAngularVelocity[2] = data.vecAngularVelocity[2];
-
-	m_pDriverHost->TrackedDevicePoseUpdated(m_unSteamVRTrackedDeviceId, m_Pose);
+		m_Pose.vecVelocity[0] = -ctrData.vecVelocity.x;
+		m_Pose.vecVelocity[2] = -ctrData.vecVelocity.z;
+		m_Pose.vecAngularVelocity[0] = -ctrData.vecAngularVelocity.x;
+		m_Pose.vecAngularVelocity[2] = -ctrData.vecAngularVelocity.z;
+	}
+	return m_Pose;
 }
 
-
-bool NOLOTrackedDevice::IsActivated() const
+std::string NOLOTrackedDevice::GetSerialNumber()
 {
-	return m_unSteamVRTrackedDeviceId != vr::k_unTrackedDeviceIndexInvalid;
+	return m_sSerialNumber;
+}
+
+void NOLOTrackedDevice::RunFrame(Controller ctrData)
+{
+	if (m_unObjectId != vr::k_unTrackedDeviceIndexInvalid)
+	{
+		GetControllerState(ctrData);
+		vr::VRServerDriverHost()->TrackedDevicePoseUpdated(m_unObjectId, GetPose(ctrData), sizeof(DriverPose_t));
+	}
+}
+
+VRControllerState_t NOLOTrackedDevice::GetControllerState()
+{
+	return m_ControllerState;
+}
+
+VRControllerState_t NOLOTrackedDevice::GetControllerState(Controller ctrData)
+{
+
+	vr::VRControllerState_t NewState = { 0 };
+	NewState.unPacketNum = m_ControllerState.unPacketNum + 1;
+	if (ctrData.Buttons & NOLO_BUTTON_1) {
+		//DriverLog("==============press=============\n");
+		NewState.ulButtonPressed |= vr::ButtonMaskFromId(k_EButton_Button1);
+		SendButtonUpdates(&vr::IVRServerDriverHost::TrackedDeviceButtonPressed, GetDPadButton(ctrData.ControllerTouchAxis.x, ctrData.ControllerTouchAxis.y));
+	}
+	if (ctrData.Buttons & NOLO_BUTTON_2) {
+		//DriverLog("==============trigger=============\n");
+		NewState.ulButtonTouched |= vr::ButtonMaskFromId(k_EButton_Button2);
+	}
+	if (ctrData.Buttons & NOLO_BUTTON_3) {
+		//DriverLog("==============menu=============\n");
+		NewState.ulButtonPressed |= vr::ButtonMaskFromId(k_EButton_Button3);
+	}
+
+	if (ctrData.Buttons & NOLO_BUTTON_4) {
+		//DriverLog("==============system=============\n");
+		NewState.ulButtonPressed |= vr::ButtonMaskFromId(k_EButton_Button4);
+	}
+	if (ctrData.Buttons & NOLO_BUTTON_5) {
+		//DriverLog("==============grip=============\n");
+		NewState.ulButtonPressed |= vr::ButtonMaskFromId(k_EButton_Button5);
+	}
+
+	// All pressed buttons are touched
+	if (ctrData.Buttons & NOLO_BUTTON_1)
+		NewState.ulButtonPressed |= vr::ButtonMaskFromId(vr::k_EButton_Axis0);
+	if (ctrData.Buttons & NOLO_BUTTON_2)
+		NewState.ulButtonTouched |= vr::ButtonMaskFromId(vr::k_EButton_Axis1);
+	if (ctrData.Buttons & NOLO_BUTTON_2)
+		NewState.ulButtonPressed |= vr::ButtonMaskFromId(vr::k_EButton_Axis1);
+	if (ctrData.ControllerTouched)
+		NewState.ulButtonTouched |= vr::ButtonMaskFromId(vr::k_EButton_Axis0);
+
+	NewState.ulButtonTouched |= NewState.ulButtonPressed;
+
+	uint64_t ulChangedTouched = NewState.ulButtonTouched ^ m_ControllerState.ulButtonTouched;
+	uint64_t ulChangedPressed = NewState.ulButtonPressed ^ m_ControllerState.ulButtonPressed;
+
+	SendButtonUpdates(&IVRServerDriverHost::TrackedDeviceButtonTouched, ulChangedTouched & NewState.ulButtonTouched);
+	SendButtonUpdates(&IVRServerDriverHost::TrackedDeviceButtonPressed, ulChangedPressed & NewState.ulButtonPressed);
+	SendButtonUpdates(&IVRServerDriverHost::TrackedDeviceButtonUnpressed, ulChangedPressed & ~NewState.ulButtonPressed);
+	SendButtonUpdates(&IVRServerDriverHost::TrackedDeviceButtonUntouched, ulChangedTouched & ~NewState.ulButtonTouched);
+
+
+	NewState.rAxis[0].x = ctrData.ControllerTouchAxis.x;
+	NewState.rAxis[0].y = ctrData.ControllerTouchAxis.y;
+	NewState.rAxis[1].x = ctrData.Buttons & NOLO_BUTTON_2;
+	NewState.rAxis[1].y = 0.0f;
+
+	if (NewState.rAxis[0].x != m_ControllerState.rAxis[0].x || NewState.rAxis[0].y != m_ControllerState.rAxis[0].y)
+		vr::VRServerDriverHost()->TrackedDeviceAxisUpdated(m_unObjectId, 0, NewState.rAxis[0]);
+	if (NewState.rAxis[1].x != m_ControllerState.rAxis[1].x)
+		vr::VRServerDriverHost()->TrackedDeviceAxisUpdated(m_unObjectId, 1, NewState.rAxis[1]);
+
+	m_ControllerState = NewState;
+	return m_ControllerState;
+}
+
+bool NOLOTrackedDevice::TriggerHapticPulse(uint32_t unAxisId, uint16_t usPulseDurationMicroseconds)
+{
+	int n = usPulseDurationMicroseconds / 40;
+
+	if (n>50) {
+
+		n = 50;
+	}
+
+	if (m_id == 0) {
+
+		set_Nolo_TriggerHapticPulse(NoloDeviceType::LeftControllerDevice, 50 + n);
+	}
+	else if (m_id == 1)
+	{
+		set_Nolo_TriggerHapticPulse(NoloDeviceType::RightControllerDevice, 50 + n);
+	}
+	return true;
+}
+
+void NOLOTrackedDevice::SendButtonUpdates(ButtonUpdate ButtonEvent, uint64_t ulMask)
+{
+	if (!ulMask)
+		return;
+
+	for (int i = 0; i< vr::k_EButton_Max; i++)
+	{
+		vr::EVRButtonId button = (vr::EVRButtonId)i;
+
+		uint64_t bit = ButtonMaskFromId(button);
+
+		if ((bit & ulMask))
+		{
+			(vr::VRServerDriverHost()->*ButtonEvent)(m_unObjectId, button, 0.0);
+		}
+	}
+}
+
+vr::EVRButtonId NOLOTrackedDevice::GetDPadButton(float float_x, float float_y)
+{
+	if (float_x > 1.0 || float_x < -1.0
+		|| float_y > 1.0 || float_y < -1.0) {
+		//LOG(WARNING) << "GetDPadButton[" << m_cControllerRole << "]: error postion(" << float_x << "," << float_y << ")";
+		return vr::k_EButton_Max;
+	}
+
+	int x = float_x * 10000.0f, y = float_y * 10000.0f;
+	//UP:-y<x<y
+	if (x > -y && x < y) {
+		//LOG_EVERY_N(INFO, 1 * 90) << "GetDPadButton[" << m_cControllerRole << "]:k_EButton_DPad_Up";
+		return vr::k_EButton_DPad_Up;
+	}
+	//DOWN:y<x<-y
+	if (x > y && x < -y) {
+		//LOG_EVERY_N(INFO, 1 * 90) << "GetDPadButton[" << m_cControllerRole << "]:k_EButton_DPad_Down";
+		return vr::k_EButton_DPad_Down;
+	}
+	//LEFT:x<y<-x
+	if (y > x && y < -x) {
+		//LOG_EVERY_N(INFO, 1 * 90) << "GetDPadButton[" << m_cControllerRole << "]:k_EButton_DPad_Left";
+		return vr::k_EButton_DPad_Left;
+	}
+	//RIGHT:-x<y<x
+	if (y > -x && y < x) {
+		//LOG_EVERY_N(INFO, 1 * 90) << "GetDPadButton[" << m_cControllerRole << "]:k_EButton_DPad_Right";
+		return vr::k_EButton_DPad_Right;
+	}
+
+	//LOG_EVERY_N(INFO, 1 * 90) << "GetDPadButton[" << m_cControllerRole << "]:unknown region(" << x << "," << y << "),float(" << float_x << "," << "" << float_y << ")";
+	return vr::k_EButton_Max;
+}
+
+void NOLOTrackedDevice::setPos(Vector3 pos)
+{
+	memcpy(&posR,&pos,sizeof(Vector3));
+}
+
+void NOLOTrackedDevice::setTurnAround(bool turn)
+{
+	IsTurnAround = turn;
 }

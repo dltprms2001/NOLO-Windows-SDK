@@ -33,6 +33,9 @@ V1
   * 发布
 - 2017/9/11
   * 提供速度和角速度
+- 2017/10/19
+  * 提供模式切换接口：平放基站模式，悬挂基站到天花板模式  
+  	NOLO_API void _cdecl set_Nolo_PlayMode(EPlayMode  Type) ;
 #
 
         

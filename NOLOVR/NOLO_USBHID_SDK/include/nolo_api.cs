@@ -169,7 +169,12 @@ namespace NOLO
         public HMD hmdData;
         public BaseStation baseStationData;
     }
-
+	public enum EPlayMode {
+	    //Place the base station horizontally【平放基站模式】
+		HorizontalMode = 0,
+		//Place the base station on the ceiling【悬挂基站到天花板模式】
+		CeilingMode
+	};
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate void funcCallback(IntPtr context);
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -331,12 +336,23 @@ namespace NOLO
 	    * Function ：Customize the 180 degree turn-around hot key by the button types. The default is double click the menu button
 	    * Parameter：Parameter keyType is an enumeration type
 	    * Return Value：NULL
-	    * Remarks：NULL
+set_Nolo_PlayMode	    * Remarks：NULL
 	    *【根据按键类型自定义旋转180热键,不进行自定义按键时默认为双击menu按键】
 	    ******************************************************************************
 	   */
 	    [DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_Nolo_TurnAroundKey")]
         public static extern void set_Nolo_TurnAroundKey(EDoubleClickKeyType keyType);
+		/*
+		******************************************************************************
+		* Function description：Customize the Flat Mode and Ceiling Mode according to EPlay Model.
+		* Parameter：Parameter Type is an enumeration type
+		* Return Value：NULL
+		* Remarks：NULL
+		*【根据EPlayModel类型自定义平放基站模式与悬挂基站模式】
+		******************************************************************************
+		*/
+		[DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_Nolo_PlayMode")]
+        public static extern void set_Nolo_PlayMode(EPlayMode ModeType);
 	}
 
 }

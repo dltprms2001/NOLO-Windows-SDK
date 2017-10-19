@@ -37,6 +37,9 @@ V1
   * Release  
 - 2017/9/11  
   * Provide velocity and angular velocity
+- 2017/10/19
+  * Add the function to switch the play mode: the horizontal mode and the ceiling mode.  
+    	NOLO_API void _cdecl set_Nolo_PlayMode(EPlayMode  Type) ;
 #
 
         
