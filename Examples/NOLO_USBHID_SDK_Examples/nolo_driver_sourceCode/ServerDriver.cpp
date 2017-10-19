@@ -20,7 +20,7 @@ EVRInitError CServerDriver::Init(IVRDriverContext * pDriverContext)
 	registerNoloDataNotifyCallBack(&CServerDriver::noloDataNotifyThread, this);
 	registerExpandDataNotifyCallBack(CServerDriver::expandDataNotifyFunc, this);
 	search_Nolo_Device();
-	set_Nolo_PlayMode(EPlayMode::CeilingMode);
+	//set_Nolo_PlayMode(EPlayMode::CeilingMode);
 
 	m_pNullHmdLatest = new CHMDDeviceDriver();
 	noloLeftController = new NOLOTrackedDevice("1314",0);
