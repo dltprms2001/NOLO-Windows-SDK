@@ -98,8 +98,8 @@ namespace NOLO {
 	     * that axis in radians/second^2. */
 	    Vector3 vecAngularAcceleration;
 		 /*
-		   state & 1 ==1 ：normal  【正常】，state & 1 ==0： Be blocked 【被遮挡】
-		   state>>1 & 1 ==1：synchronous 【同步】, state>>1 & 1 ==0: Loss of synchronization 【丢失同步】
+		   state  ==1 ：normal  【正常】，state ==0： Be blocked 【被遮挡】
+
 		*/
 		int state;
 		
@@ -135,8 +135,7 @@ namespace NOLO {
 		* that axis in radians/second^2. */
 		Vector3 vecAngularAcceleration;
         /*
-		   state & 1 ==1 ：normal  【正常】，state & 1 ==0： Be blocked 【被遮挡】
-		   state>>1 & 1 ==1：synchronous 【同步】, state>>1 & 1 ==0: Loss of synchronization 【丢失同步】
+		   state  ==1 ：normal  【正常】，state  ==0： Be blocked 【被遮挡】
 		*/
 		int state;
 	}HMD;
