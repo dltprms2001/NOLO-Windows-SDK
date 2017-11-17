@@ -19,6 +19,12 @@ EVRInitError CServerDriver::Init(IVRDriverContext * pDriverContext)
 	isTurnAround = false;
 	registerNoloDataNotifyCallBack(&CServerDriver::noloDataNotifyThread, this);
 	registerExpandDataNotifyCallBack(CServerDriver::expandDataNotifyFunc, this);
+	Vector3 hmdCenter;
+	hmdCenter.x = 0.0f;
+	hmdCenter.y = 0.1f;
+	hmdCenter.z = 0.1f;
+	set_Nolo_HmdTrackingCenter(hmdCenter);
+	
 	search_Nolo_Device();
 	//set_Nolo_PlayMode(EPlayMode::CeilingMode);
 
