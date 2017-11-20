@@ -353,6 +353,18 @@ set_Nolo_PlayMode	    * Remarks：NULL
 		*/
 		[DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_Nolo_PlayMode")]
         public static extern void set_Nolo_PlayMode(EPlayMode ModeType);
+		
+		/*
+		******************************************************************************
+		* Function description：Set the tracking center of HMD.
+		* Parameter：Parameter Type is an NVector3 type
+		* Return Value：NULL
+		* Remarks：NULL
+		*【设置头盔定位中心点】
+		******************************************************************************
+		*/
+		[DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_Nolo_HmdTrackingCenter")]
+        public static extern void set_Nolo_HmdTrackingCenter(NVector3 v);
 	}
 
 }

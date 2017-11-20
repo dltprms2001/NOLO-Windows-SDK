@@ -98,8 +98,7 @@ namespace NOLO {
 	     * that axis in radians/second^2. */
 	    Vector3 vecAngularAcceleration;
 		 /*
-		   state  ==1 ：normal  【正常】，state ==0： Be blocked 【被遮挡】
-
+		   state & 1 ==1 ：normal  【正常】，state & 1 ==0： Be blocked 【被遮挡】
 		*/
 		int state;
 		
@@ -135,7 +134,7 @@ namespace NOLO {
 		* that axis in radians/second^2. */
 		Vector3 vecAngularAcceleration;
         /*
-		   state  ==1 ：normal  【正常】，state  ==0： Be blocked 【被遮挡】
+		   state & 1 ==1 ：normal  【正常】，state & 1 ==0： Be blocked 【被遮挡】
 		*/
 		int state;
 	}HMD;
@@ -340,5 +339,30 @@ namespace NOLO {
 	*/
 	NOLO_API void _cdecl set_Nolo_PlayMode(EPlayMode  Type) ;
 	
+	/*
+	******************************************************************************
+	* Function description：Set the tracking center of HMD.
+	* Parameter：Parameter Type is an Vector3 type
+	* Return Value：NULL
+	* Remarks：NULL
+	*【设置头盔定位中心点】
+	
+	设置NOLO头盔定位器的定位球中心点位置相对于两个镜片之间的位置。根据不同头盔的参数不同，
+	将NOLO头盔定位器的定位位置转换成不同镜片之间的真实位置。
+	
+	参数Vector3 v
+	NOLO头盔定位器的定位球中心点位置相对于与两个镜片之间的位置（以两个镜片之间的位置为原点，左右为X轴，上下为Y轴，前后为Z轴）。
+	
+	Set the relative position between the centre point of headset marker ball and the mid point of two glasses. 
+	With the difference in parameter settings of various headsets, convert the tracking position of headset 
+	marker to the actual position of the mid point of two glasses (i.e. making latter one the origin of a coordinate system of this two. 
+
+	Parameter Vector3 v
+	The relative position between the centre point of headset marker ball and the mid point of two glasses 
+	(Coordinate origin be the mid point of two glasses, x-axis be the left-right direction, y-axis be the up-down direction, and z-axis be the forward-backward direction). ）
+	
+	******************************************************************************
+	*/
+	NOLO_API void _cdecl set_Nolo_HmdTrackingCenter(Vector3 v) ;
 }
 #endif // _NOLO_API_Version2_H_

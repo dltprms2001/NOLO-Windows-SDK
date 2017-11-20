@@ -36,6 +36,9 @@ V1
 - 2017/10/19
   * 提供模式切换接口：平放基站模式，悬挂基站到天花板模式  
   	NOLO_API void _cdecl set_Nolo_PlayMode(EPlayMode  Type) ;
+- 2017/11/20
+  * 设置头盔定位中心点   
+  	NOLO_API void _cdecl set_Nolo_HmdTrackingCenter(Vector3 v) ;
 #
 
         
