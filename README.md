@@ -30,7 +30,7 @@ V1
   * Add receive data from NOLO PC software callback notification interface for noloRuntime.  
 #
 NOLO USBHID SDK:  
-V1
+The version number of Windows SDK is now changed from V1 to V_0_1_RC beta.
 - 2017/8/7
   * Release  
 - 2017/9/11  
@@ -41,6 +41,12 @@ V1
 - 2017/10/19
   * Set the tracking center of HMD.   
   	NOLO_API void _cdecl set_Nolo_HmdTrackingCenter(Vector3 v) ;
+- 2017/12/6
+  * Set HMD's rotation center and HMD type name   
+  	NOLO_API void _cdecl set_Nolo_HmdTrackingCenter(Vector3 v，const char *strHmdTypeName) ;
+  * Set whether to allow sending Http messages   
+    NOLO_API void _cdecl set_PermitHttp(bool bPermit);
+  * Added directional buttons on the touchpad (i.e. up, down, left, right).
 #
 
         

@@ -1,6 +1,7 @@
 #pragma once
-#ifndef _NOLO_V2_API_H_
-#define _NOLO_V2_API_H_
+#ifndef _NOLO_V_0_1_RC_API_H_
+#define _NOLO_V_0_1_RC_API_H_
+
 #define WIN32_LEAN_AND_MEAN    
 #include <windows.h>
 #include <math.h>
@@ -12,47 +13,46 @@
 #endif
 ///Nolo_USBHID.dll api
 namespace NOLO {
-	typedef struct Vector2
+	struct Vector2
 	{
 		float x;
 		float y;
-	}Vector2;
-	typedef struct Vector3
+	};
+	struct Vector3
 	{
 		float x;
 		float y;
 		float z;
-	}Vector3;
+	};
 
-	typedef struct Quaternion
+	struct Quaternion
 	{
 		float x;
 		float y;
 		float z;
 		float w;
 		
-	}Quaternion;
+	};
 
-    typedef enum EBattery
+    enum EBattery
     {
 	    ShutDown=0,
 	    Low,
 	    Middle,
 	    High,
+    };
 
-    }EBattery;
-
-	typedef enum EDoubleClickKeyType {
+	enum EDoubleClickKeyType {
 
 		press = 0,
 		trigger,
 		menu,
 		grip,
 		cancel
-	}EDoubleClickKeyType;
+	};
 
-	//Struct of NOLO controller data  【NOLO 手柄数据结构体】
-	typedef struct Controller
+	//Struct of NOLO controller data 
+	struct Controller
 	{
 
 		Vector3 ControllerPosition;
@@ -67,7 +67,7 @@ namespace NOLO {
 		*/
 		UINT Buttons;
         /*
-		  0~1 Touchpad  touched:1; Not touched:0，【只要触摸了触摸板状态就为1,没有触摸则为0】
+		  0~1 Touchpad  touched:1; Not touched:0
 		*/
 		int ControllerTouched;
         /*
@@ -76,8 +76,8 @@ namespace NOLO {
 		*/
 		Vector2 ControllerTouchAxis;
         /*
-		  0~100：normal,【正常显示电量为0~100】
-		  255:Shut down,【长按system按键直到关闭手柄，值为255】
+		  0~100:normal
+		  255:Shut down
 		*/
 		EBattery ControllerBattery;
 		/* Velocity of the pose in meters/second */
@@ -98,13 +98,13 @@ namespace NOLO {
 	     * that axis in radians/second^2. */
 	    Vector3 vecAngularAcceleration;
 		 /*
-		   state & 1 ==1 ：normal  【正常】，state & 1 ==0： Be blocked 【被遮挡】
+		   state & 1 ==1 :normal:state & 1 ==0: Be blocked
 		*/
 		int state;
 		
-	}Controller;
-	//Struct of NOLO headset marker data 【NOLO 头盔定位器数据结构体】
-	typedef struct HMD
+	};
+	//Struct of NOLO headset marker data
+	struct HMD
 	{
 
 		Vector3 HMDPosition;
@@ -134,21 +134,21 @@ namespace NOLO {
 		* that axis in radians/second^2. */
 		Vector3 vecAngularAcceleration;
         /*
-		   state & 1 ==1 ：normal  【正常】，state & 1 ==0： Be blocked 【被遮挡】
+		   state & 1 ==1 :normal:state & 1 ==0: Be blocked
 		*/
 		int state;
-	}HMD;
-	//Struct of NOLO base station data 【NOLO基站数据结构体】
-	typedef struct BaseStation
+	};
+	//Struct of NOLO base station data
+	struct BaseStation
 	{
 	    Vector3  vecPosition;
         /*
 		  0~100:normal
 		*/
 		EBattery BaseStationPower;
-	}BaseStation;
-	//Struct of all NOLO devices data 【NOLO所有数据结构体】
-	typedef struct NoloData {
+	};
+	//Struct of all NOLO devices data
+	struct NoloData {
         
 		Controller left_Controller_Data;
 
@@ -158,30 +158,29 @@ namespace NOLO {
 
 		BaseStation baseStationData;
 
-	}NoloData;
-    // Enumerarion of NOLO devices types 【NOLO设备类型枚举】
-	typedef enum NoloDeviceType
+	};
+    // Enumerarion of NOLO devices types
+	enum NoloDeviceType
 	{
 		HmdDevice = 0,
 		LeftControllerDevice,
 		RightControllerDevice,
 		BaseStationDevice
-	}NoloDeviceType;
+	};
 
-	typedef enum ExpandMsgType {
+	enum ExpandMsgType {
 	  //180 degree turn-around
 	  DoubleClickKeyTurnAround=1,
 	  //recenter
 	  DoubleClickSystemRecenter
-	  
-    }ExpandMsgType;
+    };
 	
-	typedef enum EPlayMode {
-	    //Place the base station horizontally【平放基站模式】
+	enum EPlayMode {
+	    //Place the base station horizontally
 		HorizontalMode = 0,
-		//Place the base station on the ceiling【悬挂基站到天花板模式】
+		//Place the base station on the ceiling
 		CeilingMode
-	}NOLOMode;
+	};
 	
 	typedef void(__cdecl * noloDataNotifyCallBack)(NoloData _noloData , void * context);
 	typedef void(__cdecl *funcCallBack)(void * context);
@@ -190,179 +189,167 @@ namespace NOLO {
 
 	/**
 	  ******************************************************************************
-	  * Function description：Search for NOLO device
-	  * Parameter：NULL
-	  * Return Value：NULL
-	  * Remarks：NULL
-	  *【搜索NOLO设备】
+	  * Function description:Search for NOLO device
+	  * Parameter:NULL
+	  * Return Value:NULL
+	  * Remarks:NULL
 	  ******************************************************************************
 	*/
 	NOLO_API  void _cdecl search_Nolo_Device();
  	/*
       ******************************************************************************
-      * Function description：Close the connection with NOLO device and release resources
-      * Parameter：NULL
-      * Return Value：NULL
-      * Remarks：NULL
-	  *【关闭与NOLO设备连接，释放资源】
+      * Function description:Close the connection with NOLO device and release resources
+      * Parameter:NULL
+      * Return Value:NULL
+      * Remarks:NULL
       ******************************************************************************
    */
 	NOLO_API  void _cdecl close_Nolo_Device();
     /*
       ******************************************************************************
-      * Function description：Get call-back notification when disconnect NOLO device
-      * Parameter：Parameter fun ,custom function pointer
-      * Return Value：Returns the function registration status:false or true
-      * Remarks：NULL
-	  *【断开连接NOLO设备将会回调通知】
+      * Function description:Get call-back notification when disconnect NOLO device
+      * Parameter:Parameter fun ,custom function pointer
+      * Return Value:Returns the function registration status:false or true
+      * Remarks:NULL
       ******************************************************************************
     */
 	NOLO_API  bool _cdecl registerDisConnectCallBack(funcCallBack fun , void * context);
 	/*
       ******************************************************************************
-      * Function description：Get call-back notification when connect NOLO device
-      * Parameter：Parameter fun ,custom function pointer
-      * Return Value：Returns the function registration status:false or true
-      * Remarks：NULL
-	  *【连接NOLO设备时将会回调通知】
+      * Function description:Get call-back notification when connect NOLO device
+      * Parameter:Parameter fun ,custom function pointer
+      * Return Value:Returns the function registration status:false or true
+      * Remarks:NULL
       ******************************************************************************
     */
 	NOLO_API  bool _cdecl registerConnectSuccessCallBack(funcCallBack fun , void * context);
 		/*
       ******************************************************************************
-      * Function description：Interface of Double click the customizable button( The Default is the menu button)  or the system button to notify in real time
-      * Parameter：Parameter fun ,custom function pointer
-      * Return Value：Returns the function registration status:false or true
-      * Remarks：无
-	  *【双击自定义按键（默认为双击menu按键）或双击system按键回调通知接口函数】
+      * Function description:Interface of Double click the customizable button( The Default is the menu button)  or the system button to notify in real time
+      * Parameter:Parameter fun ,custom function pointer
+      * Return Value:Returns the function registration status:false or true
+      * Remarks:
       ******************************************************************************
     */
 	NOLO_API  bool _cdecl registerExpandDataNotifyCallBack(expandMsgCallBack fun , void * context);
 	/*
       ******************************************************************************
-      * Function description：Get call-back notification whenever getting new data through USB
-      * Parameter：Parameter fun ,custom function pointer
-      * Return Value：Returns the function registration status:false or true
-      * Remarks：NULL
-	  *【从usb接收到新数据就回调通知，返回注册函数是否注册成功】
+      * Function description:Get call-back notification whenever getting new data through USB
+      * Parameter:Parameter fun ,custom function pointer
+      * Return Value:Returns the function registration status:false or true
+      * Remarks:NULL
       ******************************************************************************
     */
 	NOLO_API  bool _cdecl registerNoloDataNotifyCallBack(noloDataNotifyCallBack fun , void * context);
 	/*
       ******************************************************************************
-      * Function description：Set vibration functions of NOLO controller
-      * Parameter：Parameter devicetype is an enumeration type,Parameter intensity : Vibration intensity range from 0~100, the bigger the stronger
-      * Return Value：Return bool type
-      * Remarks：Parameter devicetype ：LeftControllerDevice、RightControllerDevice
-	  *【设置NOLO手柄震动函数，参数类型为设备类型和震动强度，设备类型:左手和右手，震动强度范围0~100,值越大震动越激烈】
+      * Function description:Set vibration functions of NOLO controller
+      * Parameter:Parameter devicetype is an enumeration type,Parameter intensity : Vibration intensity range from 0~100, the bigger the stronger
+      * Return Value:Return bool type
+      * Remarks:Parameter devicetype  LeftControllerDevice RightControllerDevice
       ******************************************************************************
     */
 	NOLO_API  bool _cdecl set_Nolo_TriggerHapticPulse(NoloDeviceType deviceType, int intensity);
 	/*
       ******************************************************************************
-      * Function description：Get all data interface function of NOLO
-      * Parameter：NULL
-      * Return Value：Returns the NoloData structure data
-      * Remarks：NULL
-	  *【获取NOLOs所有数据接口函数】
+      * Function description:Get all data interface function of NOLO
+      * Parameter:NULL
+      * Return Value:Returns the NoloData structure data
+      * Remarks:NULL
       ******************************************************************************
     */
 	NOLO_API  NoloData _cdecl get_Nolo_NoloData();
 	/*
       ******************************************************************************
-      * Function description：Get all data interface function of NOLO left controller
-      * Parameter：NULL
-      * Return Value：Returns the Controller structure data
-      * Remarks：NULL
-	  *【获取NOLO左手柄数据接口函数】
+      * Function description:Get all data interface function of NOLO left controller
+      * Parameter:NULL
+      * Return Value:Returns the Controller structure data
+      * Remarks:NULL
       ******************************************************************************
     */
 	NOLO_API  Controller _cdecl get_Nolo_LeftControllerData();
 	/*
       ******************************************************************************
-      * Function description：Get all data interface function of NOLO right controller
-      * Parameter：NULL
-      * Return Value：Returns the Controller structure data
-      * Remarks：NULL
-	  *【获取NOLO右手柄数据接口函数】
+      * Function description:Get all data interface function of NOLO right controller
+      * Parameter:NULL
+      * Return Value:Returns the Controller structure data
+      * Remarks:NULL
       ******************************************************************************
     */
 	NOLO_API  Controller _cdecl get_Nolo_RightControllerData();
 	/*
       ******************************************************************************
-      * Function description：Get all data interface function of NOLO headset marker
-      * Parameter：NULL
-      * Return Value：Returns the HMD structure data
-      * Remarks：NULL
-	  *【获取NOLO头部数据接口函数】
+      * Function description:Get all data interface function of NOLO headset marker
+      * Parameter:NULL
+      * Return Value:Returns the HMD structure data
+      * Remarks:NULL
       ******************************************************************************
     */
 	NOLO_API HMD _cdecl get_Nolo_HMDData();
 	/*
       ******************************************************************************
-      * Function description：Get all data interface function of NOLO base station
-      * Parameter：NULL 
-      * Return Value：Returns the BaseStation structure data
-      * Remarks：NULL
-	  *【获取NOLO基站数据接口函数】
+      * Function description:Get all data interface function of NOLO base station
+      * Parameter:NULL 
+      * Return Value:Returns the BaseStation structure data
+      * Remarks:NULL
       ******************************************************************************
     */
 	NOLO_API BaseStation _cdecl get_Nolo_BaseStationData();
 	/*
       ******************************************************************************
-      * Function description：Get status data of NOLO battery power based on the type of device
-      * Parameter：Parameter devicetype is an enumeration type
-      * Return Value：Returns the EBattery enumeration type:shut down 、low 、middle 、high
-      * Remarks：NULL
-	  *【根据设备类型获取NOLO设备电量数据】
+      * Function description:Get status data of NOLO battery power based on the type of device
+      * Parameter:Parameter devicetype is an enumeration type
+      * Return Value:Returns the EBattery enumeration type:shut down  low  middle  high
+      * Remarks:NULL
       ******************************************************************************
     */
 	NOLO_API EBattery _cdecl get_Nolo_Battery(NoloDeviceType deviceType);
 	/*
 	******************************************************************************
-	* Function description： Customize the 180 degree turn-around hot key by the button types. The default is double click the menu button
-	* Parameter：Parameter keyType is an enumeration type
-	* Return Value：NULL
-	* Remarks：NULL
-	*【根据按键类型自定义一键转身热键（旋转180度）,不进行自定义按键时默认为双击menu按键】
+	* Function description: Customize the 180 degree turn-around hot key by the button types. The default is double click the menu button
+	* Parameter:Parameter keyType is an enumeration type
+	* Return Value:NULL
+	* Remarks:NULL
 	******************************************************************************
 	*/
 	NOLO_API void _cdecl set_Nolo_TurnAroundKey(EDoubleClickKeyType keyType);
 	/*
 	******************************************************************************
-	* Function description：Customize the Flat Mode and Ceiling Mode according to EPlay Model.
-	* Parameter：Parameter Type is an enumeration type
-	* Return Value：NULL
-	* Remarks：NULL
-	*【根据EPlayModel类型自定义平放基站模式与悬挂基站模式】
+	* Function description:Customize the Flat Mode and Ceiling Mode according to EPlay Model.
+	* Parameter:Parameter Type is an enumeration type
+	* Return Value:NULL
+	* Remarks:NULL
 	******************************************************************************
 	*/
 	NOLO_API void _cdecl set_Nolo_PlayMode(EPlayMode  Type) ;
 	
 	/*
 	******************************************************************************
-	* Function description：Set the tracking center of HMD.
-	* Parameter：Parameter Type is an Vector3 type
-	* Return Value：NULL
-	* Remarks：NULL
-	*【设置头盔定位中心点】
-	
-	设置NOLO头盔定位器的定位球中心点位置相对于两个镜片之间的位置。根据不同头盔的参数不同，
-	将NOLO头盔定位器的定位位置转换成不同镜片之间的真实位置。
-	
-	参数Vector3 v
-	NOLO头盔定位器的定位球中心点位置相对于与两个镜片之间的位置（以两个镜片之间的位置为原点，左右为X轴，上下为Y轴，前后为Z轴）。
-	
-	Set the relative position between the centre point of headset marker ball and the mid point of two glasses. 
-	With the difference in parameter settings of various headsets, convert the tracking position of headset 
-	marker to the actual position of the mid point of two glasses (i.e. making latter one the origin of a coordinate system of this two. 
-
-	Parameter Vector3 v
-	The relative position between the centre point of headset marker ball and the mid point of two glasses 
-	(Coordinate origin be the mid point of two glasses, x-axis be the left-right direction, y-axis be the up-down direction, and z-axis be the forward-backward direction). ）
-	
+	* Function description:Set the tracking center of HMD.
+	* Parameter:
+		@v is an Vector3 type .The relative position between the centre point of headset marker ball and 
+	the mid point of two glasses (Coordinate origin be the mid point of two glasses, x-axis be the left-right 
+	direction, y-axis be the up-down direction, and z-axis be the forward-backward direction).
+		@strHmdTypeName is the helmet type name
+	* Return Value:NULL
+	* Remarks:
+	    Set the relative position between the centre point of headset marker ball and the mid point of two glasses. 
+	With the difference in parameter settings of various headsets, convert the tracking position of headset marker 
+	to the actual position of the mid point of two glasses (i.e. making latter one the origin of a coordinate
+	system of this two. 
 	******************************************************************************
 	*/
-	NOLO_API void _cdecl set_Nolo_HmdTrackingCenter(Vector3 v) ;
+	NOLO_API void _cdecl set_Nolo_HmdTrackingCenter(Vector3 v,const char *strHmdTypeName);
+
+	
+	/******************************************************************************
+	Description   : Allow the NoloDriver send information to the nolo server.
+	Return Value  : NULL
+	Remarks       : NULL
+	Parameter List:
+		@bPermit:default value is true ,set true to perimit send imformation.
+	******************************************************************************/
+	NOLO_API void _cdecl set_PermitHttp(bool bPermit);
+
 }
-#endif // _NOLO_API_Version2_H_
+#endif // _NOLO_V_0_1_RC_API_H_

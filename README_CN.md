@@ -28,7 +28,7 @@ V1
   * 添加noloRuntime从NOLO PC 软件接收到数据立刻回调通知  
 #
 NOLO USBHID SDK:  
-V1
+The version number of Windows SDK is now changed from V1 to V_0_1_RC beta.
 - 2017/8/7
   * 发布
 - 2017/9/11
@@ -39,6 +39,12 @@ V1
 - 2017/11/20
   * 设置头盔定位中心点   
   	NOLO_API void _cdecl set_Nolo_HmdTrackingCenter(Vector3 v) ;
+- 2017/12/6
+  * 设置头盔定位中心点以及头盔名称   
+  	NOLO_API void _cdecl set_Nolo_HmdTrackingCenter(Vector3 v，const char *strHmdTypeName) ;
+  * 设置是否允许发送Http消息   
+    NOLO_API void _cdecl set_PermitHttp(bool bPermit);
+  * 添加了触摸板上下左右按键响应功能
 #
 
         

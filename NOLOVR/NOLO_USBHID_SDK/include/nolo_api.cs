@@ -1,6 +1,8 @@
 using System;
+using System.Text;
 using System.Runtime.InteropServices;
 
+//Version:V_0_1_RC
 
 namespace NOLO
 {
@@ -308,7 +310,7 @@ namespace NOLO
         */
         [DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_HMDData")]
         public static extern HMD get_Nolo_HMDData();
-		/*
+        /**
          ******************************************************************************
          * Function description：Get all data interface function of NOLO base station
          * Parameter：NULL 
@@ -319,30 +321,30 @@ namespace NOLO
        */
         [DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_BaseStationData")]
         public static extern BaseStation get_Nolo_BaseStationData();
-		/**
-          ******************************************************************************
-          * Function description：Get status data of NOLO battery power based on the type of device
-          * Parameter：Parameter devicetype is an enumeration type
-          * Return Value：Returns the EBattery enumeration type:shut down 、low 、middle 、high
-          * Remarks：NULL
-	      *【根据设备类型获取NOLO设备电量数据】
-          ******************************************************************************
+        /**
+         ******************************************************************************
+         * Function description：Get status data of NOLO battery power based on the type of device
+         * Parameter：Parameter devicetype is an enumeration type
+         * Return Value：Returns the EBattery enumeration type:shut down 、low 、middle 、high
+         * Remarks：NULL
+	     *【根据设备类型获取NOLO设备电量数据】
+         ******************************************************************************
         */
         [DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "get_Nolo_Battery")]
         public static extern EBattery get_Nolo_Battery(NoloDeviceType devicetype);
-    
-	   /*
-	    ******************************************************************************
-	    * Function ：Customize the 180 degree turn-around hot key by the button types. The default is double click the menu button
-	    * Parameter：Parameter keyType is an enumeration type
-	    * Return Value：NULL
-set_Nolo_PlayMode	    * Remarks：NULL
-	    *【根据按键类型自定义旋转180热键,不进行自定义按键时默认为双击menu按键】
-	    ******************************************************************************
-	   */
-	    [DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_Nolo_TurnAroundKey")]
+
+        /**
+         ******************************************************************************
+         * Function ：Customize the 180 degree turn-around hot key by the button types. The default is double click the menu button
+         * Parameter：Parameter keyType is an enumeration type
+         * Return Value：NULL
+ set_Nolo_PlayMode	    * Remarks：NULL
+         *【根据按键类型自定义旋转180热键,不进行自定义按键时默认为双击menu按键】
+         ******************************************************************************
+        */
+        [DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_Nolo_TurnAroundKey")]
         public static extern void set_Nolo_TurnAroundKey(EDoubleClickKeyType keyType);
-		/*
+        /*
 		******************************************************************************
 		* Function description：Customize the Flat Mode and Ceiling Mode according to EPlay Model.
 		* Parameter：Parameter Type is an enumeration type
@@ -351,10 +353,10 @@ set_Nolo_PlayMode	    * Remarks：NULL
 		*【根据EPlayModel类型自定义平放基站模式与悬挂基站模式】
 		******************************************************************************
 		*/
-		[DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_Nolo_PlayMode")]
+        [DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_Nolo_PlayMode")]
         public static extern void set_Nolo_PlayMode(EPlayMode ModeType);
-		
-		/*
+
+        /*
 		******************************************************************************
 		* Function description：Set the tracking center of HMD.
 		* Parameter：Parameter Type is an NVector3 type
@@ -363,8 +365,18 @@ set_Nolo_PlayMode	    * Remarks：NULL
 		*【设置头盔定位中心点】
 		******************************************************************************
 		*/
-		[DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_Nolo_HmdTrackingCenter")]
-        public static extern void set_Nolo_HmdTrackingCenter(NVector3 v);
-	}
+        [DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_Nolo_HmdTrackingCenter")]
+        public static extern void set_Nolo_HmdTrackingCenter(NVector3 v,StringBuilder strHmdTypeName);
+		/******************************************************************************
+		Description   : Allow the NoloDriver send information to the nolo server.
+		Return Value  : NULL
+		Remarks       : NULL
+		Parameter List:
+		@bPermit:default value is true ,set true to perimit send imformation.
+		******************************************************************************/
+		[DllImportAttribute("Nolo_USBHID", CallingConvention = CallingConvention.Cdecl, EntryPoint = "set_PermitHttp")]
+		public static extern void set_Nolo_PermitHttp(bool bPermit);
+		
+    }
 
 }
