@@ -46,7 +46,8 @@ The version number of Windows SDK is now changed from V1 to V_0_1_RC beta.
   	NOLO_API void _cdecl set_Nolo_HmdTrackingCenter(Vector3 v，const char *strHmdTypeName) ;
   * Set whether to allow sending Http messages   
     NOLO_API void _cdecl set_PermitHttp(bool bPermit);
-  * Added directional buttons on the touchpad (i.e. up, down, left, right).
+  * Added directional buttons on the touchpad (i.e. up, down, left, right);
+  * Fixed a bug on controllers where the touch panel was not sensitive on edges.
 #
 
         
