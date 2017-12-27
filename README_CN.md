@@ -45,6 +45,7 @@ The version number of Windows SDK is now changed from V1 to V_0_1_RC beta.
   * 设置是否允许发送Http消息   
     NOLO_API void _cdecl set_PermitHttp(bool bPermit);
   * 添加了触摸板上下左右按键响应功能
+  * 修复了部分设备触摸位置不完全的bug
 #
 
         
