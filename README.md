@@ -29,6 +29,3 @@ Get help and submit questions [here](https://github.com/NOLOVR/NOLO-Windows-SDK/
 
 ## Release notes  
 View release notes [here](https://github.com/NOLOVR/NOLO-Windows-SDK/releases).
-
-        
-        
