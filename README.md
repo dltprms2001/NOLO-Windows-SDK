@@ -1,13 +1,12 @@
-# NOLO-windows SDK   [中文](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/README_CN.md)
+# NOLO-Windows-SDK [中文](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/README_CN.md)
+* This SDK provides all data from NOLO, including real-time data from headset marker, controllers and base station. 
+* Developers can use NOLO data to access  a variety of game platforms.  
+NOLO's headset marker can provide position and rotation data.You can use the rotation data provided by it when the rotation data provided by your HMD's IMU is not stable.  
+* Game developers can use NOLO to develop games on various platforms.  
+Unity developers can choose Unity SDK provided by NOLO.  
+Native Android developers can choose Android SDK provided by NOLO.  
+Windows developers can choose Windows SDK provided by NOLO. 
 
-- The role and significance of the NOLO Windows SDK  
-    * This SDK provides all data of NOLO, including real-time data from headset marker, controllers and base station. 
-    * Developers can use NOLO data to access  a variety of game platforms.  
-      NOLO's headset marker can provide position and rotation data.You can use the rotation data provided by it when the rotation data provided by your HMD's IMU is not stable.  
-    * Game developers can use NOLO to develop games on various platforms.  
-      Unity developers can choose Unity SDK provided by NOLO.  
-      Native Android developers can choose Android SDK provided by NOLO.  
-      Windows developers can choose Windows SDK provided by NOLO.   
 ## NOLO USBHID SDK [Getting started](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/HIDGetStarted.md) 
     NOLO USBHID SDK directly reads NOLO tracking data through USB.  
      In this situation,you needn't install NOLO PC software(NOLO Driver for Windows) when you're developing.
