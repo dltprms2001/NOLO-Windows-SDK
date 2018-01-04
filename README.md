@@ -27,36 +27,8 @@ See examples [here](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/Examp
 ## Help & Discussions
 Get help and submit questions [here](https://github.com/NOLOVR/NOLO-Windows-SDK/issues).
 
-## Updates  
+## Release notes  
 View release notes [here](https://github.com/NOLOVR/NOLO-Windows-SDK/releases).
-
-NOLO ZEROMQ SDK:  
-V1
-- 2017/5/31  
-  * Add double click the menu button callback notification interface and double click system button callback notification interface.
-- 2017/7/7  
-  * Add receive data from NOLO PC software callback notification interface for noloRuntime.  
-#
-NOLO USBHID SDK:  
-The version number of Windows SDK is now changed from V1 to V_0_1_RC beta.
-- 2017/8/7
-  * Release  
-- 2017/9/11  
-  * Provide velocity and angular velocity.
-- 2017/10/19
-  * Add the function to switch the play mode: the horizontal mode and the ceiling mode.  
-    	NOLO_API void _cdecl set_Nolo_PlayMode(EPlayMode  Type) ;
-- 2017/10/19
-  * Set the tracking center of HMD.   
-  	NOLO_API void _cdecl set_Nolo_HmdTrackingCenter(Vector3 v) ;
-- 2017/12/6
-  * Set HMD's rotation center and HMD type name   
-  	NOLO_API void _cdecl set_Nolo_HmdTrackingCenter(Vector3 v，const char *strHmdTypeName) ;
-  * Set whether to allow sending Http messages   
-    NOLO_API void _cdecl set_PermitHttp(bool bPermit);
-  * Added directional buttons on the touchpad (i.e. up, down, left, right);
-  * Fixed a bug on controllers where the touch panel was not sensitive on edges.
-#
 
         
         
