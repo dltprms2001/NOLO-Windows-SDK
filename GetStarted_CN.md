@@ -1,7 +1,6 @@
-
-# 快速入门  [English](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted.md)  
-* :安装[Nolo_driver_for_windows_setup.msi](https://github.com/NOLOVR/NOLO-Driver-For-Windows/raw/master/NOLOVR/Nolo_driver_for_windows_setup_0.0.22_beta.msi)软件.
-* :启动Nolo_driver_for_windows软件.  
+# 快速入门  [English](/GetStarted.md)  
+* :安装 [Nolo_driver_for_windows_setup.msi](https://github.com/NOLOVR/NOLO-Driver-For-Windows/tree/master/NOLOVR) 软件.
+* :启动 Nolo_driver_for_windows 软件.  
 * :C/C++工程(VS开发工具)  
     1:新建VS C++工程.
          <div><img src="https://github.com/NOLOVR/NOLO-Others/blob/master/Windows-SDK-Others/picture/1.jpg"></div>

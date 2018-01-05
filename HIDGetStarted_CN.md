@@ -1,5 +1,4 @@
-
-# 快速入门  [English](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/HIDGetStarted.md)  
+# 快速入门  [English](/HIDGetStarted.md)  
 * :C/C++工程(VS开发工具)  
     1:新建VS C++工程.
          <div><img src="https://github.com/NOLOVR/NOLO-Others/blob/master/Windows-SDK-Others/picture/1.jpg"></div>

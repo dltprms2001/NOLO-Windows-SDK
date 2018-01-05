@@ -1,4 +1,4 @@
-# Getting started   [中文](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/HIDGetStarted_CN.md)  
+# Getting started [中文](/HIDGetStarted_CN.md)  
 
 * :C/C++Project(VS development tools)  
 
