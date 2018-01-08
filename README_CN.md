@@ -1,21 +1,21 @@
-# NOLO-windows SDK    
-* SDK提供了NOLO所有数据,包括了头盔、手柄、基站等实时数据. 
-* PC头盔类的开发者可以使用NOLO提供的数据接入各游戏平台.  
-* 手机投屏软件类的开发者可以使用NOLO提供的数据接入各游戏平台.  
-NOLO提供了头盔的定位数据和姿态数据,当手机陀螺仪提供的姿态数据不够稳定时请选择NOLO提供的姿态数据.  
-* 游戏类的开发者可以使用NOLO提供的数据开发各平台游戏.  
-对于Unity游戏开发者可以选择NOLO提供的Unity SDK.  
-对于Mobile游戏开发者可以选择NOLO提供的Android SDK.  
-对于其他游戏开发者可以选择NOLO提供的Windows SDK.  
-* 应用类的开发者可以使用NOLO提供的数据开发各种应用软件. 
+# NOLO-Windows-SDK    
+* 下列两个版本的 Window SDK 均提供所有 NOLO 数据，包括头盔、手柄、基站等实时数据。**开发者请选择其中一个版本进行开发。**
+* PC头盔类的开发者可以使用NOLO提供的数据接入各游戏平台。  
+* 手机投屏软件类的开发者可以使用NOLO提供的数据接入各游戏平台。  
+NOLO提供了头盔的定位数据和姿态数据,当手机陀螺仪提供的姿态数据不够稳定时请选择NOLO提供的姿态数据。  
+* 游戏类的开发者可以使用NOLO提供的数据开发各平台游戏。  
+对于Unity游戏开发者可以选择NOLO提供的 [Unity SDK](https://github.com/NOLOVR/NOLO-Unity-SDK)。  
+对于Mobile游戏开发者可以选择NOLO提供的 [Android SDK](https://github.com/NOLOVR/NOLO-Android-SDK)。  
+对于其他游戏开发者可以选择NOLO提供的 Windows SDK（本SDK）。  
+* 应用类的开发者可以使用NOLO提供的数据开发各种应用软件。
 #
-## NOLO USBHID SDK [快速入门](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/HIDGetStarted_CN.md) 
-    NOLO USBHID SDK直接通过USB线读取NOLO定位数据，开发时不需要安装NOLO PC软件.  
+## 快速入门
+### NOLO-USBHID-SDK [下载](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_USBHID_SDK)，[使用说明](/HIDGetStarted_CN.md)
+    NOLO-USBHID-SDK 直接通过 USB 线读取 NOLO 定位数据，开发时不需要安装 NOLO PC 软件.  
     
-#
-## NOLO ZEROMQ SDK  [快速入门](https://github.com/NOLOVR/NOLO-Windows-SDK/blob/master/GetStarted_CN.md) 
-    NOLO ZEROMQ SDK通过ZEROMQ网络传输协议从NOLO PC软件读取数据，开发时需要安装NOLO PC软件.    
-    NOLO PC软件默认提供SteamVR手柄驱动.  
+### NOLO-ZEROMQ-SDK [下载](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_ZEROMQ_SDK)，[使用说明](/GetStarted_CN.md)
+    NOLO-ZEROMQ-SDK 通过 ZEROMQ 网络传输协议从 NOLO PC 软件读取数据，开发时需要安装 NOLO PC 软件.    
+    NOLO PC 软件默认提供 SteamVR 手柄驱动.  
 #
 ## 参考案例
 [使用案例](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/Examples)
