@@ -10,10 +10,10 @@ NOLO提供了头盔的定位数据和姿态数据,当手机陀螺仪提供的姿
 * 应用类的开发者可以使用NOLO提供的数据开发各种应用软件。
 #
 ## 快速入门
-### NOLO-USBHID-SDK [下载](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_USBHID_SDK)，[使用说明](/HIDGetStarted_CN.md)
+### [NOLO-USBHID-SDK](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_USBHID_SDK)，[使用说明](/HIDGetStarted_CN.md)
     NOLO-USBHID-SDK 直接通过 USB 线读取 NOLO 定位数据，开发时不需要安装 NOLO PC 软件.  
     
-### NOLO-ZEROMQ-SDK [下载](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_ZEROMQ_SDK)，[使用说明](/GetStarted_CN.md)
+### [NOLO-ZEROMQ-SDK](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_ZEROMQ_SDK)，[使用说明](/GetStarted_CN.md)
     NOLO-ZEROMQ-SDK 通过 ZEROMQ 网络传输协议从 NOLO PC 软件读取数据，开发时需要安装 NOLO PC 软件.    
     NOLO PC 软件默认提供 SteamVR 手柄驱动.  
 #
