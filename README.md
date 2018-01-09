@@ -12,12 +12,12 @@ Other developers can use Windows SDK (this SDK) provided by NOLO.
 
 #
 ## Getting Started
-### [NOLO-USBHID-SDK](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_USBHID_SDK), [Instructions](/HIDGetStarted.md)
+### [NOLO-USBHID-SDK](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_USBHID_SDK) [Instructions](/HIDGetStarted.md)
 
     NOLO-USBHID-SDK reads NOLO tracking data directly through USB port.  
     In this case, you DON'T need to install NOLO PC software (NOLO-Driver-for-Windows) during development.
 
-### [NOLO-ZEROMQ-SDK](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_ZEROMQ_SDK), [Instructions](/GetStarted.md)
+### [NOLO-ZEROMQ-SDK](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_ZEROMQ_SDK) [Instructions](/GetStarted.md)
 
     NOLO-ZEROMQ-SDK reads data from NOLO PC software via ZEROMQ network transfer protocol.  
     In this case, you'll need to install NOLO PC software (NOLO-Driver-for-Windows) during development.
