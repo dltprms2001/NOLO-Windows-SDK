@@ -1,6 +1,6 @@
 # NOLO-Windows-SDK [中文](/README_CN.md)
-- You can use **either** SDK listed below to develop SteamVR drivers and games that support NOLO.\
-Both SDKs provide all data from NOLO, including real-time data from headset marker, controllers and base station. **You should choose to incorporate either one into your game(s).**
+- You could use either SDK listed below to develop SteamVR drivers and games that support NOLO. Both SDK provide all data from NOLO, including real-time data from headset marker, controllers and base station.\
+**Notice: We no longer maintain the ZEROMQ version. You should use the USBHID version for all future game development.**
 
 - Developers can use NOLO data to communicate with a variety of game platforms.\
 NOLO's headset marker provides both position and rotation data. You can use data from NOLO if data from your Helmet-Mounted-Display(HMD)'s IMU is not stable. 
@@ -12,12 +12,12 @@ Other developers can use Windows SDK (this SDK) provided by NOLO.
 
 #
 ## Getting Started
-### [NOLO-USBHID-SDK](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_USBHID_SDK) [Instructions](/HIDGetStarted.md)
+### **[NOLO-USBHID-SDK](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_USBHID_SDK) [Instructions](/HIDGetStarted.md)**
 
     NOLO-USBHID-SDK reads NOLO tracking data directly through USB port.  
     In this case, you DON'T need to install NOLO PC software (NOLO-Driver-for-Windows) during development.
 
-### [NOLO-ZEROMQ-SDK](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_ZEROMQ_SDK) [Instructions](/GetStarted.md)
+### [NOLO-ZEROMQ-SDK](https://github.com/NOLOVR/NOLO-Windows-SDK/tree/master/NOLOVR/NOLO_ZEROMQ_SDK) [Instructions](/GetStarted.md) (Warning: We are phasing out this version!)
 
     NOLO-ZEROMQ-SDK reads data from NOLO PC software via ZEROMQ network transfer protocol.  
     In this case, you'll need to install NOLO PC software (NOLO-Driver-for-Windows) during development.
